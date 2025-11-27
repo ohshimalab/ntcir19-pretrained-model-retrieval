@@ -20,7 +20,7 @@ from pathlib import Path
 import pandas as pd
 
 from ntcir19_pretrained_model_retrieval.config import load_config
-from ntcir19_pretrained_model_retrieval.logger_setup import get_logger
+from ntcir19_pretrained_model_retrieval.logger_setup import get_logger, setup_logger
 from ntcir19_pretrained_model_retrieval.trainer import run_experiment
 
 
@@ -36,7 +36,8 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
-    logger = get_logger(log_file=args.log_file)
+    setup_logger(log_file=args.log_file)
+    logger = get_logger()
 
     cfg = load_config(args.config)
     ft = cfg.finetune
