@@ -1,5 +1,13 @@
+
 # Sample configuration for ntcir19-pretrained-model-retrieval
-# Put this file next to main.py or pass it with --config
+# Put this file next to `main.py` or pass it with `--config`
+
+[download]
+# Path to the Excel file that lists dataset tasks. REQUIRED.
+task_excel = "bert-tasks.xlsx"
+
+# Random seed for sampling within download_datasets
+seed = 0
 
 # Directory where processed datasets will be written
 output_dir = "bert-data"
@@ -8,4 +16,22 @@ output_dir = "bert-data"
 max_rows = 5000
 
 # Default revision when loading datasets that don't specify a subset
-default_revision = "refs/convert/parquet"
+revision = "refs/convert/parquet"
+
+log_file = "download.log"
+
+
+[finetune]
+# Root directory containing dataset subdirectories (each dataset must contain train/val/test jsonl)
+data_dir_root = "bert-data"
+
+# Excel file listing models to run. Must have a column named `model_name` by default.
+model_list_excel = "bert-models.xlsx"
+
+# Column name in `model_list_excel` which contains model IDs
+model_list_column = "model_name"
+
+seed = 0
+output_root = "experiment_results"
+log_file = "finetune.log"
+batch_size = 32
