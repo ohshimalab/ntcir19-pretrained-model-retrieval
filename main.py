@@ -6,7 +6,7 @@ was split across modules for clarity.
 
 from pathlib import Path
 
-from ntcir19_pretrained_model_retrieval.config import load_config, Config
+from ntcir19_pretrained_model_retrieval.config import Config, load_config
 from ntcir19_pretrained_model_retrieval.logger_setup import setup_logger
 
 # Determine log file from default config (if present) and initialize logger

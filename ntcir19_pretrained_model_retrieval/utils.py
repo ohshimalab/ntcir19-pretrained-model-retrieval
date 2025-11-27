@@ -5,10 +5,12 @@ from datasets import load_dataset
 
 from .logger_setup import get_logger
 
+
 def limit_rows(df: pd.DataFrame, max_rows: int = 5000, seed: int = 42) -> pd.DataFrame:
     if len(df) > max_rows:
         return df.sample(n=max_rows, random_state=seed)
     return df
+
 
 def one_hot_label_to_id(df: pd.DataFrame, cols: list[str]) -> list[int]:
     ids = []
@@ -19,6 +21,7 @@ def one_hot_label_to_id(df: pd.DataFrame, cols: list[str]) -> list[int]:
                 found_id = i
         ids.append(found_id)
     return ids
+
 
 def load_dataset_safe(row: pd.Series, revision: str):
     logger = get_logger()
@@ -35,6 +38,7 @@ def load_dataset_safe(row: pd.Series, revision: str):
     except Exception as e:
         logger.error(f"Error loading {dataset_name}: {e}")
         return None, None
+
 
 def get_splits(ds, row: pd.Series, seed: int = 42):
     train_split = row["train_split"]
@@ -67,6 +71,7 @@ def get_splits(ds, row: pd.Series, seed: int = 42):
         ds_test = ds[test_split]
 
     return ds_train, ds_val, ds_test
+
 
 def process_split(ds_split, text_col: str, label_col: str, seed: int = 42, max_rows: int = 5000):
     if ds_split is None:
