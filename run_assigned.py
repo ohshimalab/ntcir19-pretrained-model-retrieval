@@ -13,14 +13,15 @@ If `--dry-run` is provided, the script only prints assigned pairs.
 Otherwise it invokes `trainer.run_experiment` for each assigned pair.
 """
 
-from pathlib import Path
 import argparse
 import sys
+from pathlib import Path
+
 import pandas as pd
 
-from config import load_config
-from trainer import run_experiment
-from logger_setup import get_logger
+from ntcir19_pretrained_model_retrieval.config import load_config
+from ntcir19_pretrained_model_retrieval.logger_setup import get_logger
+from ntcir19_pretrained_model_retrieval.trainer import run_experiment
 
 
 def parse_args(argv=None):

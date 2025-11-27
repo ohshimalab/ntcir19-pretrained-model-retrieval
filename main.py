@@ -6,8 +6,8 @@ was split across modules for clarity.
 
 from pathlib import Path
 
-from config import Config, load_config
-from logger_setup import setup_logger
+from ntcir19_pretrained_model_retrieval.config import load_config, Config
+from ntcir19_pretrained_model_retrieval.logger_setup import setup_logger
 
 # Determine log file from default config (if present) and initialize logger
 default_config_path = Path("config.toml")
@@ -22,6 +22,7 @@ chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "
 setup_logger(chosen_log)
 
 import cli
+from ntcir19_pretrained_model_retrieval import cli
 
 
 def main():
