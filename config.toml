@@ -1,0 +1,11 @@
+# Sample configuration for ntcir19-pretrained-model-retrieval
+# Put this file next to main.py or pass it with --config
+
+# Directory where processed datasets will be written
+output_dir = "bert-data"
+
+# Maximum rows to keep per split (train/val/test)
+max_rows = 5000
+
+# Default revision when loading datasets that don't specify a subset
+default_revision = "refs/convert/parquet"
