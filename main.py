@@ -21,7 +21,6 @@ except Exception:
 chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "process_status.log"
 setup_logger(chosen_log)
 
-import cli
 from ntcir19_pretrained_model_retrieval import cli
 
 
@@ -39,9 +38,6 @@ was split across modules for clarity.
 
 from pathlib import Path
 
-from config import Config, load_config
-from logger_setup import setup_logger
-
 # Determine log file from default config (if present) and initialize logger
 default_config_path = Path("config.toml")
 default_cfg = Config()
@@ -53,8 +49,6 @@ except Exception:
 
 chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "process_status.log"
 setup_logger(chosen_log)
-
-import cli
 
 
 def main():
