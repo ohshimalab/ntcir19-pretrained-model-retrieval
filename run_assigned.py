@@ -30,12 +30,13 @@ def parse_args(argv=None):
     p.add_argument("--num-machines", type=int, required=True, help="Total number of machines")
     p.add_argument("--config", type=Path, default=Path("config.toml"), help="Path to config file")
     p.add_argument("--dry-run", action="store_true", help="Only print assigned pairs, do not run experiments")
+    p.add_argument("--log-file", type=Path, default=Path("finetune_assigned.log"), help="Path to log file")
     return p.parse_args(argv)
 
 
 def main(argv=None):
     args = parse_args(argv)
-    logger = get_logger()
+    logger = get_logger(log_file=args.log_file)
 
     cfg = load_config(args.config)
     ft = cfg.finetune
