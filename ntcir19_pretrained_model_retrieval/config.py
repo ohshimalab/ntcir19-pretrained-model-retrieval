@@ -1,34 +1,34 @@
 import json
 import tomllib
-from dataclasses import dataclass, field
 from pathlib import Path
 
-
-@dataclass
-class DownloadConfig:
-    task_excel: Path | None = None
-    seed: int = 0
-    output_dir: Path = Path("bert-data")
-    max_rows: int = 5000
-    revision: str = "refs/convert/parquet"
-    log_file: str | None = None
+from pydantic import BaseModel, Field, ConfigDict
 
 
-@dataclass
-class FinetuneConfig:
-    data_dir_root: Path | None = None
-    model_list_excel: Path | None = None
-    model_list_column: str = "model_name"
-    seed: int = 0
-    output_root: Path = Path("./experiment_results")
-    log_file: str | None = None
-    batch_size: int = 32
+class DownloadConfig(BaseModel):
+    task_excel: Path | None = Field(default=None)
+    seed: int = Field(default=0)
+    output_dir: Path = Field(default=Path("bert-data"))
+    max_rows: int = Field(default=5000)
+    revision: str = Field(default="refs/convert/parquet")
+    log_file: str | None = Field(default=None)
 
 
-@dataclass
-class Config:
-    download: DownloadConfig = field(default_factory=DownloadConfig)
-    finetune: FinetuneConfig = field(default_factory=FinetuneConfig)
+class FinetuneConfig(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
+    data_dir_root: Path | None = Field(default=None)
+    model_list_excel: Path | None = Field(default=None)
+    model_list_column: str = Field(default="model_name")
+    seed: int = Field(default=0)
+    output_root: Path = Field(default=Path("./experiment_results"))
+    log_file: str | None = Field(default=None)
+    batch_size: int = Field(default=32)
+
+
+class Config(BaseModel):
+    download: DownloadConfig = Field(default_factory=DownloadConfig)
+    finetune: FinetuneConfig = Field(default_factory=FinetuneConfig)
 
 
 def load_config(path: Path) -> Config:
@@ -47,8 +47,6 @@ def load_config(path: Path) -> Config:
             data = json.load(f)
     else:
         raise ValueError("Unsupported config format: use .toml or .json")
-
-    cfg = Config()
 
     download_section = {}
     finetune_section = {}
@@ -72,32 +70,6 @@ def load_config(path: Path) -> Config:
                 if k in data:
                     finetune_section[k] = data[k]
 
-    # Populate download config
-    if "task_excel" in download_section:
-        cfg.download.task_excel = Path(download_section["task_excel"]) if download_section["task_excel"] else None
-    if "seed" in download_section:
-        cfg.download.seed = int(download_section["seed"])
-    if "output_dir" in download_section:
-        cfg.download.output_dir = Path(download_section["output_dir"])
-    if "max_rows" in download_section:
-        cfg.download.max_rows = int(download_section["max_rows"])
-    if "revision" in download_section:
-        cfg.download.revision = download_section["revision"]
-    if "default_revision" in download_section:
-        cfg.download.revision = download_section["default_revision"]
-
-    # Populate finetune config
-    if "data_dir_root" in finetune_section:
-        cfg.finetune.data_dir_root = (
-            Path(finetune_section["data_dir_root"]) if finetune_section["data_dir_root"] else None
-        )
-    if "model_list_excel" in finetune_section:
-        cfg.finetune.model_list_excel = (
-            Path(finetune_section["model_list_excel"]) if finetune_section["model_list_excel"] else None
-        )
-    if "model_list_column" in finetune_section:
-        cfg.finetune.model_list_column = finetune_section["model_list_column"]
-
     # Globals mapping for backward compatibility
     globals_section = {}
     if isinstance(data, dict):
@@ -108,33 +80,30 @@ def load_config(path: Path) -> Config:
                 if k in data:
                     globals_section[k] = data[k]
 
-    if "seed" in globals_section:
-        gseed = int(globals_section["seed"])
-        if "seed" not in download_section:
-            cfg.download.seed = gseed
-        if "seed" not in finetune_section:
-            cfg.finetune.seed = gseed
+    # Apply globals to sections if not already set
+    if "seed" in globals_section and "seed" not in download_section:
+        download_section["seed"] = globals_section["seed"]
+    if "seed" in globals_section and "seed" not in finetune_section:
+        finetune_section["seed"] = globals_section["seed"]
 
-    if "output_root" in globals_section:
-        gout = globals_section["output_root"]
-        if "output_root" not in finetune_section:
-            cfg.finetune.output_root = Path(gout)
+    if "output_root" in globals_section and "output_root" not in finetune_section:
+        finetune_section["output_root"] = globals_section["output_root"]
 
-    if "log_file" in globals_section:
-        glog = globals_section["log_file"]
-        if "log_file" not in download_section:
-            cfg.download.log_file = glog
-        if "log_file" not in finetune_section:
-            cfg.finetune.log_file = glog
+    if "log_file" in globals_section and "log_file" not in download_section:
+        download_section["log_file"] = globals_section["log_file"]
+    if "log_file" in globals_section and "log_file" not in finetune_section:
+        finetune_section["log_file"] = globals_section["log_file"]
 
-    if "data_root_dir" in globals_section:
-        gdata = globals_section["data_root_dir"]
-        if "output_dir" not in download_section and "data_root_dir" not in download_section:
-            cfg.download.output_dir = Path(gdata)
+    if "data_root_dir" in globals_section and "output_dir" not in download_section:
+        download_section["output_dir"] = globals_section["data_root_dir"]
 
-    if "batch_size" in globals_section:
-        gb = int(globals_section["batch_size"])
-        if "batch_size" not in finetune_section:
-            cfg.finetune.batch_size = gb
+    if "batch_size" in globals_section and "batch_size" not in finetune_section:
+        finetune_section["batch_size"] = globals_section["batch_size"]
 
-    return cfg
+    # Build the config dict
+    config_dict = {
+        "download": download_section,
+        "finetune": finetune_section,
+    }
+
+    return Config.model_validate(config_dict)
