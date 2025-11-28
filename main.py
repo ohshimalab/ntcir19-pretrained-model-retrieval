@@ -7,7 +7,7 @@ was split across modules for clarity.
 from pathlib import Path
 
 from ntcir19_pretrained_model_retrieval.config import Config, load_config
-from ntcir19_pretrained_model_retrieval.logger_setup import setup_logger, get_logger
+from ntcir19_pretrained_model_retrieval.logger_setup import get_logger, setup_logger
 
 # Determine log file from default config (if present) and initialize logger
 default_config_path = Path("config.toml")
