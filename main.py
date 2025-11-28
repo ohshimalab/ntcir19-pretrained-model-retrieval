@@ -7,7 +7,7 @@ was split across modules for clarity.
 from pathlib import Path
 
 from ntcir19_pretrained_model_retrieval.config import Config, load_config
-from ntcir19_pretrained_model_retrieval.logger_setup import setup_logger
+from ntcir19_pretrained_model_retrieval.logger_setup import setup_logger, get_logger
 
 # Determine log file from default config (if present) and initialize logger
 default_config_path = Path("config.toml")
@@ -20,6 +20,12 @@ except Exception:
 
 chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "process_status.log"
 setup_logger(chosen_log)
+logger = get_logger()
+try:
+    # Log loaded default config for diagnostics
+    logger.info("Loaded default config: %s", default_cfg.model_dump())
+except Exception:
+    logger.info("Loaded default config")
 
 from ntcir19_pretrained_model_retrieval import cli
 

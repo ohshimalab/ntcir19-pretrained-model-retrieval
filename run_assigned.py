@@ -40,6 +40,11 @@ def main(argv=None):
     logger = get_logger()
 
     cfg = load_config(args.config)
+    # Log full loaded config for traceability
+    try:
+        logger.info("Loaded config for run_assigned: %s", cfg.model_dump())
+    except Exception:
+        logger.info("Loaded config for run_assigned")
     ft = cfg.finetune
 
     if ft.data_dir_root is None or ft.model_list_excel is None:

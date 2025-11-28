@@ -19,6 +19,12 @@ def download_datasets(
     dl = cfg.download
     logger = get_logger()
 
+    # Log the loaded config for this command
+    try:
+        logger.info("Loaded config for download_datasets: %s", cfg.model_dump())
+    except Exception:
+        logger.info("Loaded config for download_datasets")
+
     if dl.task_excel is None:
         typer.secho("Error: `task_excel` must be set in the [download] section of the config file.", fg="red")
         raise typer.Exit(code=2)
@@ -106,6 +112,12 @@ def finetune_all(
     cfg = load_config(config)
     ft = cfg.finetune
     logger = get_logger()
+
+    # Log the loaded config for this command
+    try:
+        logger.info("Loaded config for finetune_all: %s", cfg.model_dump())
+    except Exception:
+        logger.info("Loaded config for finetune_all")
 
     if ft.data_dir_root is None:
         typer.secho("Error: `data_dir_root` must be set in the [finetune] section of the config file.", fg="red")
