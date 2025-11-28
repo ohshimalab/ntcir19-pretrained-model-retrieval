@@ -34,4 +34,4 @@ model_list_column = "model_name"
 seed = 0
 output_root = "experiment_results"
 log_file = "finetune.log"
-batch_size = 32
+batch_size = 16
