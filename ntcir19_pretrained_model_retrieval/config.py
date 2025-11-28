@@ -2,7 +2,7 @@ import json
 import tomllib
 from pathlib import Path
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class DownloadConfig(BaseModel):
