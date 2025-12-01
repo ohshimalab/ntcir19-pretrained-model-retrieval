@@ -110,7 +110,7 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
         label2id=label2id,
         id2label=id2label,
         ignore_mismatched_sizes=True,
-        problem_type="single_label_classification",
+        # problem_type="single_label_classification",
     )
 
     training_args = TrainingArguments(
