@@ -42,30 +42,46 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
         logger.error(f"DATA LOAD ERROR: {run_name} - {e}")
         return
 
-    if not pd.api.types.is_numeric_dtype(train_df["labels"]):
-        logger.info(f"LABEL MAPPING: {run_name} - Text labels detected.")
-        unique_labels = sorted(train_df["labels"].unique().tolist())
-        num_labels = len(unique_labels)
+    # Build a robust label -> id mapping that supports boolean, numeric, and
+    # categorical/text labels. We derive mapping from the training set and
+    # apply it to validation/test, dropping any rows with unknown labels.
 
-        label2id = {label: i for i, label in enumerate(unique_labels)}
-        id2label = {i: label for i, label in enumerate(unique_labels)}
+    def build_label_mapping(series):
+        s = series.dropna()
+        # Booleans: map False->0, True->1 (stable ordering)
+        if pd.api.types.is_bool_dtype(s):
+            label2id = {False: 0, True: 1}
+            id2label = {0: False, 1: True}
+            return label2id, id2label
 
-        def map_labels(df, split_name):
-            df["labels"] = df["labels"].map(label2id)
-            if df["labels"].isnull().any():
-                dropped_count = df["labels"].isnull().sum()
-                logger.warning(f"LABEL WARNING: {run_name} - Dropping {dropped_count} rows in {split_name}.")
-                df = df.dropna(subset=["labels"])
-            return df.astype({"labels": "int"})
+        # Numeric types: preserve unique values but map them to 0..N-1
+        if pd.api.types.is_numeric_dtype(s):
+            unique = sorted(s.unique().tolist())
+            label2id = {v: i for i, v in enumerate(unique)}
+            id2label = {i: v for i, v in enumerate(unique)}
+            return label2id, id2label
 
-        train_df = map_labels(train_df, "train")
-        val_df = map_labels(val_df, "validation")
-        test_df = map_labels(test_df, "test")
-    else:
-        unique_labels = sorted(train_df["labels"].unique().tolist())
-        num_labels = len(unique_labels)
-        label2id = {l: l for l in unique_labels}
-        id2label = {l: l for l in unique_labels}
+        # Fallback: categorical/text labels. Use stable ordering by string
+        unique = sorted(s.unique().tolist(), key=lambda x: str(x))
+        label2id = {v: i for i, v in enumerate(unique)}
+        id2label = {i: v for i, v in enumerate(unique)}
+        return label2id, id2label
+
+    def apply_mapping(df, mapping, split_name):
+        df = df.copy()
+        df["labels"] = df["labels"].map(mapping)
+        if df["labels"].isnull().any():
+            dropped_count = int(df["labels"].isnull().sum())
+            logger.warning(f"LABEL WARNING: {run_name} - Dropping {dropped_count} rows in {split_name}.")
+            df = df.dropna(subset=["labels"])
+        return df.astype({"labels": "int"})
+
+    label2id, id2label = build_label_mapping(train_df["labels"])
+    num_labels = len(label2id)
+
+    train_df = apply_mapping(train_df, label2id, "train")
+    val_df = apply_mapping(val_df, label2id, "validation")
+    test_df = apply_mapping(test_df, label2id, "test")
 
     dataset = DatasetDict(
         {
