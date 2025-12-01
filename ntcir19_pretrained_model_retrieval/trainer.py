@@ -89,8 +89,12 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
     tokenized_datasets = dataset.map(tokenize_function, batched=True)
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        model_id, num_labels=num_labels, label2id=label2id, id2label=id2label,
+        model_id,
+        num_labels=num_labels,
+        label2id=label2id,
+        id2label=id2label,
         ignore_mismatched_sizes=True,
+        problem_type="single_label_classification",
     )
 
     training_args = TrainingArguments(
