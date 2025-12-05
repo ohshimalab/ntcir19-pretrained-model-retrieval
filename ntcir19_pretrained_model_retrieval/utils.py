@@ -92,5 +92,10 @@ def process_split(ds_split, text_col: str, label_col: str, seed: int = 42, max_r
         df.columns = ["text", "labels"]
     else:
         return pd.DataFrame()
-
+    na_row_count = df["text"].isnull().sum() + df["labels"].isnull().sum()
+    if na_row_count > 0:
+        logger = get_logger()
+        logger.warning(f"DATA WARNING: Dropping {na_row_count} rows with missing text or labels.")
+    df = df.dropna(subset=["text", "labels"])
+    df = df.reset_index(drop=True)
     return limit_rows(df, max_rows=max_rows, seed=seed)
