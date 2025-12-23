@@ -2,43 +2,97 @@ import json
 import tomllib
 from pathlib import Path
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
-class DownloadConfig(BaseModel):
-    task_excel: Path | None = Field(default=None)
-    seed: int = Field(default=0)
-    output_dir: Path = Field(default=Path("bert-data"))
-    max_rows: int = Field(default=5000)
-    revision: str = Field(default="refs/convert/parquet")
-    log_file: str | None = Field(default=None)
+class BaseConfig(BaseModel):
+    """Base configuration with common fields."""
+
+    seed: int = Field(default=0, description="Random seed for reproducibility")
+    log_file: Path | None = Field(default=None, description="Path to log file")
 
 
-class FinetuneConfig(BaseModel):
+class DownloadConfig(BaseConfig):
+    """Configuration for dataset download and preprocessing."""
+
+    task_excel: Path | None = Field(default=None, description="Path to Excel file with dataset task definitions")
+    output_dir: Path = Field(default=Path("bert-data"), description="Directory to save processed datasets")
+    max_rows: int = Field(default=5000, description="Maximum rows to keep per split")
+    revision: str = Field(default="refs/convert/parquet", description="Dataset revision to load from HuggingFace")
+
+    @field_validator("max_rows")
+    @classmethod
+    def validate_positive_int(cls, v: int) -> int:
+        if v <= 0:
+            raise ValueError("max_rows must be positive")
+        return v
+
+
+class FinetuneConfig(BaseConfig):
+    """Configuration for model fine-tuning experiments."""
+
     model_config = ConfigDict(protected_namespaces=())
 
-    data_dir_root: Path | None = Field(default=None)
-    model_list_excel: Path | None = Field(default=None)
-    model_list_column: str = Field(default="model_name")
-    seed: int = Field(default=0)
-    output_root: Path = Field(default=Path("./experiment_results"))
-    log_file: str | None = Field(default=None)
-    batch_size: int = Field(default=32)
+    data_dir_root: Path | None = Field(default=None, description="Root directory containing dataset subdirectories")
+    model_list_excel: Path | None = Field(default=None, description="Path to Excel file listing models to fine-tune")
+    model_list_column: str = Field(default="model_name", description="Column name in model list Excel")
+    output_root: Path = Field(default=Path("experiment_results"), description="Root directory for experiment outputs")
+    batch_size: int = Field(default=32, description="Training and evaluation batch size")
+
+    @field_validator("batch_size")
+    @classmethod
+    def validate_positive_batch_size(cls, v: int) -> int:
+        if v <= 0:
+            raise ValueError("batch_size must be positive")
+        return v
 
 
 class Config(BaseModel):
+    """Top-level configuration containing download and finetune sections."""
+
     download: DownloadConfig = Field(default_factory=DownloadConfig)
     finetune: FinetuneConfig = Field(default_factory=FinetuneConfig)
 
 
-def load_config(path: Path) -> Config:
-    """Load configuration from a TOML or JSON file into a Config.
+def _apply_globals(section: dict, globals_section: dict, keys: list[str]) -> dict:
+    """
+    Apply global config values to section if not already set.
 
-    Supported formats: .toml, .json
+    Args:
+        section: Configuration section dict
+        globals_section: Global configuration dict
+        keys: Keys to apply from globals
+
+    Returns:
+        New dict with globals applied (does not mutate input)
+    """
+    result = section.copy()
+    for key in keys:
+        if key in globals_section and key not in result:
+            result[key] = globals_section[key]
+    return result
+
+
+def load_config(path: Path) -> Config:
+    """
+    Load configuration from TOML or JSON file.
+
+    Supports optional [globals] section for shared settings across download/finetune sections.
+
+    Args:
+        path: Path to config file (.toml or .json)
+
+    Returns:
+        Validated Config object
+
+    Raises:
+        FileNotFoundError: If config file doesn't exist
+        ValueError: If file format is not .toml or .json
     """
     if not path.exists():
         raise FileNotFoundError(f"Config file not found: {path}")
 
+    # Load raw data
     if path.suffix.lower() == ".toml":
         with path.open("rb") as f:
             data = tomllib.load(f)
@@ -48,62 +102,15 @@ def load_config(path: Path) -> Config:
     else:
         raise ValueError("Unsupported config format: use .toml or .json")
 
-    download_section = {}
-    finetune_section = {}
+    # Extract sections with defaults
+    download_section = data.get("download", {})
+    finetune_section = data.get("finetune", {})
+    globals_section = data.get("globals", {})
 
-    if isinstance(data, dict):
-        if "download" in data:
-            download_section = data["download"] or {}
-        elif "download_datasets" in data:
-            download_section = data["download_datasets"] or {}
-        else:
-            for k in ("task_excel", "output_dir", "max_rows", "default_revision", "revision", "seed"):
-                if k in data:
-                    download_section[k] = data[k]
+    # Apply globals (pure - returns new dicts)
+    download_section = _apply_globals(download_section, globals_section, ["seed", "log_file"])
+    finetune_section = _apply_globals(
+        finetune_section, globals_section, ["seed", "log_file", "output_root", "batch_size"]
+    )
 
-        if "finetune" in data:
-            finetune_section = data["finetune"] or {}
-        elif "finetune_all" in data:
-            finetune_section = data["finetune_all"] or {}
-        else:
-            for k in ("data_dir_root", "model_list_excel", "model_list_column"):
-                if k in data:
-                    finetune_section[k] = data[k]
-
-    # Globals mapping for backward compatibility
-    globals_section = {}
-    if isinstance(data, dict):
-        if "globals" in data:
-            globals_section = data["globals"] or {}
-        else:
-            for k in ("seed", "output_root", "log_file", "data_root_dir", "batch_size"):
-                if k in data:
-                    globals_section[k] = data[k]
-
-    # Apply globals to sections if not already set
-    if "seed" in globals_section and "seed" not in download_section:
-        download_section["seed"] = globals_section["seed"]
-    if "seed" in globals_section and "seed" not in finetune_section:
-        finetune_section["seed"] = globals_section["seed"]
-
-    if "output_root" in globals_section and "output_root" not in finetune_section:
-        finetune_section["output_root"] = globals_section["output_root"]
-
-    if "log_file" in globals_section and "log_file" not in download_section:
-        download_section["log_file"] = globals_section["log_file"]
-    if "log_file" in globals_section and "log_file" not in finetune_section:
-        finetune_section["log_file"] = globals_section["log_file"]
-
-    if "data_root_dir" in globals_section and "output_dir" not in download_section:
-        download_section["output_dir"] = globals_section["data_root_dir"]
-
-    if "batch_size" in globals_section and "batch_size" not in finetune_section:
-        finetune_section["batch_size"] = globals_section["batch_size"]
-
-    # Build the config dict
-    config_dict = {
-        "download": download_section,
-        "finetune": finetune_section,
-    }
-
-    return Config.model_validate(config_dict)
+    return Config.model_validate({"download": download_section, "finetune": finetune_section})
