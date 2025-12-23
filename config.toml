@@ -1,37 +1,66 @@
 
-# Sample configuration for ntcir19-pretrained-model-retrieval
-# Put this file next to `main.py` or pass it with `--config`
+# NTCIR19 Pretrained Model Retrieval Configuration
+# 
+# This file configures the dataset download and model fine-tuning pipelines.
+# Sections [download] and [finetune] are required.
+# The optional [globals] section provides shared settings inherited by both sections.
+
+[globals]
+# Shared settings: seed and log_file are applied to both download and finetune if not overridden
+seed = 0
+log_file = "experiment.log"
+
 
 [download]
-# Path to the Excel file that lists dataset tasks. REQUIRED.
+# Dataset download and preprocessing configuration
+
+# REQUIRED: Path to Excel file defining dataset tasks
+# Must have columns: dataset_name, subset, train_split, val_split, test_split, text_col, label_col
 task_excel = "bert-tasks.xlsx"
 
-# Random seed for sampling within download_datasets
-seed = 0
-
-# Directory where processed datasets will be written
+# Directory where processed datasets (JSONL files) will be written
 output_dir = "bert-data"
 
-# Maximum rows to keep per split (train/val/test)
+# Maximum samples to keep per split (train/val/test)
+# Larger datasets are randomly sampled down to this limit
 max_rows = 5000
 
-# Default revision when loading datasets that don't specify a subset
+# HuggingFace dataset revision to load
+# Common values: "main", "refs/convert/parquet", etc.
 revision = "refs/convert/parquet"
 
-log_file = "download.log"
+# Uncomment to override global seed for download-specific determinism
+# seed = 0
+
+# Uncomment to override global log file
+# log_file = "download.log"
 
 
 [finetune]
-# Root directory containing dataset subdirectories (each dataset must contain train/val/test jsonl)
+# Model fine-tuning configuration
+
+# REQUIRED: Root directory containing dataset subdirectories
+# Each subdirectory must contain train.jsonl, val.jsonl, test.jsonl
 data_dir_root = "bert-data"
 
-# Excel file listing models to run. Must have a column named `model_name` by default.
+# REQUIRED: Excel file listing model IDs to fine-tune
+# Typically one model ID per row in column specified by model_list_column
 model_list_excel = "bert-models.xlsx"
 
-# Column name in `model_list_excel` which contains model IDs
+# Column name in model_list_excel containing model IDs
+# Default: "model_name"
 model_list_column = "model_name"
 
-seed = 0
+# Root directory where experiment results are written
+# Each run creates: {output_root}/{dataset_name}_{model_id}/
 output_root = "experiment_results"
-log_file = "finetune.log"
+
+# Batch size for training and evaluation
+# Affects memory usage and training speed (typical range: 8-32)
 batch_size = 16
+
+# Uncomment to override global seed for fine-tuning reproducibility
+# seed = 0
+
+# Uncomment to override global log file
+# log_file = "finetune.log"
