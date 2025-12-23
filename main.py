@@ -1,36 +1,37 @@
-"""Minimal entrypoint: initialize logger (from config) and run CLI app.
+"""Minimal CLI entrypoint with logger initialization.
 
-This file intentionally keeps very little logic. The original large `main.py`
-was split across modules for clarity.
+Loads config from config.toml (if present) and initializes logging before running CLI.
 """
 
 from pathlib import Path
 
+from ntcir19_pretrained_model_retrieval import cli
 from ntcir19_pretrained_model_retrieval.config import Config, load_config
 from ntcir19_pretrained_model_retrieval.logger_setup import get_logger, setup_logger
 
-# Determine log file from default config (if present) and initialize logger
-default_config_path = Path("config.toml")
-default_cfg = Config()
-try:
+
+def _initialize_logger() -> None:
+    """Load config and set up logger with file and console handlers."""
+    default_config_path = Path("config.toml")
+
+    logger_path = None
     if default_config_path.exists():
-        default_cfg = load_config(default_config_path)
-except Exception:
-    default_cfg = Config()
+        try:
+            default_cfg = load_config(default_config_path)
+            logger_path = default_cfg.download.log_file or default_cfg.finetune.log_file
+        except Exception as e:
+            get_logger().warning(f"Failed to load config: {e}. Using defaults.")
 
-chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "process_status.log"
-setup_logger(chosen_log)
-logger = get_logger()
-try:
-    # Log loaded default config for diagnostics
-    logger.info("Loaded default config: %s", default_cfg.model_dump())
-except Exception:
-    logger.info("Loaded default config")
+    # Use explicit fallback if no path configured
+    if not logger_path:
+        logger_path = Path("process_status.log")
 
-from ntcir19_pretrained_model_retrieval import cli
+    setup_logger(logger_path)
 
 
-def main():
+def main() -> None:
+    """Initialize and run the CLI application."""
+    _initialize_logger()
     cli.app()
 
 
