@@ -245,6 +245,17 @@ def _order_jobs(jobs: list[tuple], order: str) -> list[tuple]:
     return jobs
 
 
+def _slice_jobs(jobs: list[tuple], portion_index: int, portion_total: int) -> list[tuple]:
+    """Return only the jobs in the requested portion (1-indexed)."""
+    if portion_total <= 1:
+        return jobs
+
+    chunk = (len(jobs) + portion_total - 1) // portion_total
+    start = (portion_index - 1) * chunk
+    end = start + chunk
+    return jobs[start:end]
+
+
 @app.command()
 def download_datasets(
     config: Path = typer.Option(Path("config.toml"), "--config", help="Path to TOML/JSON config file"),
@@ -281,6 +292,8 @@ def _finetune_distributed(
     ft: FinetuneConfig,
     dry_run: bool,
     order: str,
+    portion_index: int,
+    portion_total: int,
 ) -> None:
     """Run assigned jobs on this machine (distributed mode).
 
@@ -315,6 +328,9 @@ def _finetune_distributed(
     logger.info(f"Distributed mode: Machine {machine_id}/{num_machines} assigned {len(assigned)}/{total_jobs} jobs")
 
     assigned = _order_jobs(assigned, order)
+    assigned = _slice_jobs(assigned, portion_index, portion_total)
+
+    logger.info("Portioning: index %d of %d -> %d jobs (post-ordering)", portion_index, portion_total, len(assigned))
 
     if dry_run:
         typer.secho(f"\n[DRY-RUN] Machine {machine_id} would run {len(assigned)} jobs:", fg="blue")
@@ -338,6 +354,8 @@ def _finetune_single(
     ft: FinetuneConfig,
     dry_run: bool,
     order: str,
+    portion_index: int,
+    portion_total: int,
 ) -> None:
     """Run all jobs on this machine (single-machine mode).
 
@@ -360,6 +378,9 @@ def _finetune_single(
             jobs.append((idx, data_dir, model_id))
 
     jobs = _order_jobs(jobs, order)
+    jobs = _slice_jobs(jobs, portion_index, portion_total)
+
+    logger.info("Portioning: index %d of %d -> %d jobs (post-ordering)", portion_index, portion_total, len(jobs))
 
     if dry_run:
         typer.secho(f"\n[DRY-RUN] Would run {total_jobs} jobs:", fg="blue")
@@ -387,6 +408,8 @@ def finetune_all(
     ),
     dry_run: bool = typer.Option(False, "--dry-run", help="Preview assigned jobs without running"),
     order: str = typer.Option("asc", "--order", help="Job order: asc (0..N) or desc (N..0)"),
+    portion_index: int = typer.Option(1, "--portion-index", help="Portion number to run (1-indexed)"),
+    portion_total: int = typer.Option(1, "--portion-total", help="Total portions to split assigned jobs"),
 ):
     """Fine-tune all (or assigned) models on all (or assigned) datasets.
 
@@ -426,11 +449,29 @@ def finetune_all(
         typer.secho("Error: --order must be 'asc' or 'desc'", fg="red")
         raise typer.Exit(code=2)
 
+    if portion_total < 1:
+        typer.secho("Error: --portion-total must be >= 1", fg="red")
+        raise typer.Exit(code=2)
+    if portion_index < 1 or portion_index > portion_total:
+        typer.secho("Error: --portion-index must be between 1 and --portion-total", fg="red")
+        raise typer.Exit(code=2)
+
     # Mode dispatch: distributed or single-machine
     if machine_id is not None and num_machines is not None:
-        _finetune_distributed(data_dirs, model_ids, machine_id, num_machines, total_jobs, ft, dry_run, order)
+        _finetune_distributed(
+            data_dirs,
+            model_ids,
+            machine_id,
+            num_machines,
+            total_jobs,
+            ft,
+            dry_run,
+            order,
+            portion_index,
+            portion_total,
+        )
     elif machine_id is None and num_machines is None:
-        _finetune_single(data_dirs, model_ids, total_jobs, ft, dry_run, order)
+        _finetune_single(data_dirs, model_ids, total_jobs, ft, dry_run, order, portion_index, portion_total)
     else:
         typer.secho(
             "Error: Both --machine-id and --num-machines must be provided together for distributed mode.",
