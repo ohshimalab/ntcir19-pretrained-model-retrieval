@@ -238,6 +238,13 @@ def _load_models(model_list_excel: Path, model_column: str, logger) -> list[str]
         raise typer.Exit(code=2)
 
 
+def _order_jobs(jobs: list[tuple], order: str) -> list[tuple]:
+    """Return jobs ordered ascending (default) or descending."""
+    if order == "desc":
+        return list(reversed(jobs))
+    return jobs
+
+
 @app.command()
 def download_datasets(
     config: Path = typer.Option(Path("config.toml"), "--config", help="Path to TOML/JSON config file"),
@@ -273,6 +280,7 @@ def _finetune_distributed(
     total_jobs: int,
     ft: FinetuneConfig,
     dry_run: bool,
+    order: str,
 ) -> None:
     """Run assigned jobs on this machine (distributed mode).
 
@@ -306,6 +314,8 @@ def _finetune_distributed(
 
     logger.info(f"Distributed mode: Machine {machine_id}/{num_machines} assigned {len(assigned)}/{total_jobs} jobs")
 
+    assigned = _order_jobs(assigned, order)
+
     if dry_run:
         typer.secho(f"\n[DRY-RUN] Machine {machine_id} would run {len(assigned)} jobs:", fg="blue")
         for idx, data_dir, model_id in assigned:
@@ -327,6 +337,7 @@ def _finetune_single(
     total_jobs: int,
     ft: FinetuneConfig,
     dry_run: bool,
+    order: str,
 ) -> None:
     """Run all jobs on this machine (single-machine mode).
 
@@ -342,23 +353,27 @@ def _finetune_single(
 
     logger.info("Single-machine mode: running all jobs")
 
+    jobs: list[tuple[int, Path, str]] = []
+    for di, data_dir in enumerate(data_dirs):
+        for mi, model_id in enumerate(model_ids):
+            idx = di * num_models + mi
+            jobs.append((idx, data_dir, model_id))
+
+    jobs = _order_jobs(jobs, order)
+
     if dry_run:
         typer.secho(f"\n[DRY-RUN] Would run {total_jobs} jobs:", fg="blue")
-        for di, data_dir in enumerate(data_dirs):
-            for mi, model_id in enumerate(model_ids):
-                idx = di * num_models + mi
-                typer.echo(f"  [{idx}] {data_dir.name:50s} + {model_id}")
+        for idx, data_dir, model_id in jobs:
+            typer.echo(f"  [{idx}] {data_dir.name:50s} + {model_id}")
         return
 
     # Run all jobs
-    for di, data_dir in enumerate(data_dirs):
-        for mi, model_id in enumerate(model_ids):
-            try:
-                linear_index = di * num_models + mi
-                logger.info(f"RUN [{linear_index}]: {data_dir.name} / {model_id}")
-                run_experiment(data_dir, model_id, ft.output_root, ft.seed, ft.batch_size)
-            except Exception:
-                logger.exception(f"FAILED: {data_dir} / {model_id}")
+    for idx, data_dir, model_id in jobs:
+        try:
+            logger.info(f"RUN [{idx}]: {data_dir.name} / {model_id}")
+            run_experiment(data_dir, model_id, ft.output_root, ft.seed, ft.batch_size)
+        except Exception:
+            logger.exception(f"FAILED: {data_dir} / {model_id}")
 
 
 @app.command()
@@ -371,6 +386,7 @@ def finetune_all(
         None, "--num-machines", help="Total number of machines in distributed mode"
     ),
     dry_run: bool = typer.Option(False, "--dry-run", help="Preview assigned jobs without running"),
+    order: str = typer.Option("asc", "--order", help="Job order: asc (0..N) or desc (N..0)"),
 ):
     """Fine-tune all (or assigned) models on all (or assigned) datasets.
 
@@ -405,11 +421,16 @@ def finetune_all(
     total_jobs = len(data_dirs) * num_models
     logger.info(f"Inventory: {len(data_dirs)} datasets × {num_models} models = {total_jobs} total jobs")
 
+    order = order.lower()
+    if order not in {"asc", "desc"}:
+        typer.secho("Error: --order must be 'asc' or 'desc'", fg="red")
+        raise typer.Exit(code=2)
+
     # Mode dispatch: distributed or single-machine
     if machine_id is not None and num_machines is not None:
-        _finetune_distributed(data_dirs, model_ids, machine_id, num_machines, total_jobs, ft, dry_run)
+        _finetune_distributed(data_dirs, model_ids, machine_id, num_machines, total_jobs, ft, dry_run, order)
     elif machine_id is None and num_machines is None:
-        _finetune_single(data_dirs, model_ids, total_jobs, ft, dry_run)
+        _finetune_single(data_dirs, model_ids, total_jobs, ft, dry_run, order)
     else:
         typer.secho(
             "Error: Both --machine-id and --num-machines must be provided together for distributed mode.",
