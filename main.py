@@ -3,6 +3,7 @@
 Loads config from config.toml (if present) and initializes logging before running CLI.
 """
 
+import os
 from pathlib import Path
 
 from ntcir19_pretrained_model_retrieval import cli
@@ -29,9 +30,28 @@ def _initialize_logger() -> None:
     setup_logger(logger_path)
 
 
+def _enable_cuda_determinism() -> None:
+    """Force deterministic CUDA behavior when available."""
+    os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":16:8")
+    os.environ.setdefault("PYTORCH_DETERMINISTIC", "1")
+
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            torch.use_deterministic_algorithms(True)
+            torch.backends.cudnn.benchmark = False
+            torch.backends.cuda.matmul.allow_tf32 = False
+            torch.backends.cudnn.allow_tf32 = False
+            get_logger().info("CUDA determinism enabled (deterministic kernels, TF32 off).")
+    except Exception as e:
+        get_logger().warning(f"Could not enforce CUDA determinism: {e}")
+
+
 def main() -> None:
     """Initialize and run the CLI application."""
     _initialize_logger()
+    _enable_cuda_determinism()
     cli.app()
 
 
@@ -59,6 +79,7 @@ setup_logger(chosen_log)
 
 
 def main():
+    _enable_cuda_determinism()
     cli.app()
 
 

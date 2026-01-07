@@ -342,7 +342,15 @@ def _finetune_distributed(
     for idx, data_dir, model_id in assigned:
         try:
             logger.info(f"RUN [{idx}]: {data_dir.name} / {model_id}")
-            run_experiment(data_dir, model_id, ft.output_root, ft.seed, ft.batch_size)
+            run_experiment(
+                data_dir,
+                model_id,
+                ft.output_root,
+                ft.seed,
+                ft.batch_size,
+                ft.model_revision,
+                ft.tokenizer_revision,
+            )
         except Exception:
             logger.exception(f"FAILED [{idx}]: {data_dir} / {model_id}")
 
@@ -392,7 +400,15 @@ def _finetune_single(
     for idx, data_dir, model_id in jobs:
         try:
             logger.info(f"RUN [{idx}]: {data_dir.name} / {model_id}")
-            run_experiment(data_dir, model_id, ft.output_root, ft.seed, ft.batch_size)
+            run_experiment(
+                data_dir,
+                model_id,
+                ft.output_root,
+                ft.seed,
+                ft.batch_size,
+                ft.model_revision,
+                ft.tokenizer_revision,
+            )
         except Exception:
             logger.exception(f"FAILED: {data_dir} / {model_id}")
 

@@ -1,8 +1,11 @@
 import os
+import random
 from pathlib import Path
 from typing import Tuple
 
+import numpy as np
 import pandas as pd
+import torch
 from datasets import Dataset, DatasetDict
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from transformers import (
@@ -12,6 +15,7 @@ from transformers import (
     PreTrainedTokenizer,
     Trainer,
     TrainingArguments,
+    set_seed,
 )
 
 from .logger_setup import get_logger
@@ -30,6 +34,17 @@ TRAINING_CONFIG = {
     "metric_for_best_model": "loss",
     "max_token_length": 512,
 }
+
+
+def seed_everything(seed: int) -> None:
+    """Seed all RNGs to stabilize initialization across runs and machines."""
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    set_seed(seed)
 
 
 def compute_metrics(pred):
@@ -125,7 +140,7 @@ def load_datasets(data_dir: Path, run_name: str) -> Tuple[pd.DataFrame, pd.DataF
         raise
 
 
-def prepare_tokenizer(model_id: str, run_name: str) -> Tuple[PreTrainedTokenizer, int]:
+def prepare_tokenizer(model_id: str, run_name: str, tokenizer_revision: str | None) -> Tuple[PreTrainedTokenizer, int]:
     """
     Load tokenizer and determine appropriate max length.
 
@@ -137,7 +152,11 @@ def prepare_tokenizer(model_id: str, run_name: str) -> Tuple[PreTrainedTokenizer
         Tuple of (tokenizer, max_length)
     """
     logger = get_logger()
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    tok_kwargs = {}
+    if tokenizer_revision:
+        tok_kwargs["revision"] = tokenizer_revision
+
+    tokenizer = AutoTokenizer.from_pretrained(model_id, **tok_kwargs)
     max_len = tokenizer.model_max_length
 
     if max_len > 100_000:
@@ -175,7 +194,15 @@ def create_training_history(trainer_state) -> pd.DataFrame:
     return pd.DataFrame(epoch_stats)
 
 
-def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
+def run_experiment(
+    data_dir,
+    model_id,
+    output_root,
+    seed: int,
+    batch_size: int,
+    model_revision: str | None = None,
+    tokenizer_revision: str | None = None,
+):
     """
     Run a complete fine-tuning experiment for one dataset-model pair.
 
@@ -196,6 +223,7 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
         return
 
     logger.info(f"STARTING: {run_name} | Dir: {data_dir} | Model: {model_id}")
+    seed_everything(seed)
 
     # Load datasets
     try:
@@ -221,7 +249,7 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
     )
 
     # Prepare tokenizer and tokenize datasets
-    tokenizer, max_len = prepare_tokenizer(model_id, run_name)
+    tokenizer, max_len = prepare_tokenizer(model_id, run_name, tokenizer_revision)
 
     def tokenize_function(examples):
         return tokenizer(examples["text"], padding="max_length", truncation=True, max_length=max_len)
@@ -229,15 +257,19 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
     tokenized_datasets = dataset.map(tokenize_function, batched=True)
 
     # Load model
-    model = AutoModelForSequenceClassification.from_pretrained(
-        model_id,
-        num_labels=num_labels,
-        label2id=label2id,
-        id2label=id2label,
-        ignore_mismatched_sizes=True,
-    )
+    model_kwargs = {
+        "num_labels": num_labels,
+        "label2id": label2id,
+        "id2label": id2label,
+        "ignore_mismatched_sizes": True,
+    }
+    if model_revision:
+        model_kwargs["revision"] = model_revision
+
+    model = AutoModelForSequenceClassification.from_pretrained(model_id, **model_kwargs)
 
     # Configure training
+    # NOTE: full_determinism=True assumes deterministic kernels; enabling AMP/bfloat16/TF32 will reintroduce drift.
     training_args = TrainingArguments(
         output_dir=str(output_dir),
         num_train_epochs=TRAINING_CONFIG["num_train_epochs"],
@@ -261,6 +293,7 @@ def run_experiment(data_dir, model_id, output_root, seed: int, batch_size: int):
         seed=seed,
         data_seed=seed,
         full_determinism=True,
+        dataloader_num_workers=0,
     )
 
     trainer = Trainer(

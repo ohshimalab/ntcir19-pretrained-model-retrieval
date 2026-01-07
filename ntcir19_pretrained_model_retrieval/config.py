@@ -36,6 +36,8 @@ class FinetuneConfig(BaseConfig):
     data_dir_root: Path | None = Field(default=None, description="Root directory containing dataset subdirectories")
     model_list_excel: Path | None = Field(default=None, description="Path to Excel file listing models to fine-tune")
     model_list_column: str = Field(default="model_name", description="Column name in model list Excel")
+    model_revision: str | None = Field(default=None, description="Model checkpoint revision to pin")
+    tokenizer_revision: str | None = Field(default=None, description="Tokenizer revision to pin")
     output_root: Path = Field(default=Path("experiment_results"), description="Root directory for experiment outputs")
     batch_size: int = Field(default=32, description="Training and evaluation batch size")
 

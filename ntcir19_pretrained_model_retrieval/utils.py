@@ -58,7 +58,7 @@ def load_dataset_safe(row: pd.Series, revision: str) -> Tuple[Optional[DatasetDi
             ds = load_dataset(dataset_name, revision=revision)
             subset_name = "default"
         else:
-            ds = load_dataset(dataset_name, subset)
+            ds = load_dataset(dataset_name, subset, revision=revision)
             subset_name = subset
         return ds, subset_name
     except Exception as e:
