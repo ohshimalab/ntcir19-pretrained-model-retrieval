@@ -1,12 +1,13 @@
-"""Minimal CLI entrypoint with logger initialization.
+"""CLI entrypoint with logger and determinism bootstrap.
 
-Loads config from config.toml (if present) and initializes logging before running CLI.
+Loads config from config.toml (if present) to configure logging, then applies
+CUDA determinism settings before importing the CLI (and thus torch). Keeping
+the import late ensures env flags are in place prior to torch initialization.
 """
 
 import os
 from pathlib import Path
 
-from ntcir19_pretrained_model_retrieval import cli
 from ntcir19_pretrained_model_retrieval.config import Config, load_config
 from ntcir19_pretrained_model_retrieval.logger_setup import get_logger, setup_logger
 
@@ -49,37 +50,13 @@ def _enable_cuda_determinism() -> None:
 
 
 def main() -> None:
-    """Initialize and run the CLI application."""
+    """Initialize logging, enforce determinism, then run the CLI."""
     _initialize_logger()
     _enable_cuda_determinism()
-    cli.app()
 
+    # Import CLI only after env flags are set so torch honors determinism
+    from ntcir19_pretrained_model_retrieval import cli
 
-if __name__ == "__main__":
-    main()
-"""Minimal entrypoint: initialize logger (from config) and run CLI app.
-
-This file intentionally keeps very little logic. The original large `main.py`
-was split across modules for clarity.
-"""
-
-from pathlib import Path
-
-# Determine log file from default config (if present) and initialize logger
-default_config_path = Path("config.toml")
-default_cfg = Config()
-try:
-    if default_config_path.exists():
-        default_cfg = load_config(default_config_path)
-except Exception:
-    default_cfg = Config()
-
-chosen_log = default_cfg.download.log_file or default_cfg.finetune.log_file or "process_status.log"
-setup_logger(chosen_log)
-
-
-def main():
-    _enable_cuda_determinism()
     cli.app()
 
 
