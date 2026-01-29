@@ -1,0 +1,51 @@
+full_task_name,model_name,eval_accuracy
+Abhi0072/HateXplain,cardiffnlp/twitter-roberta-base-sentiment-latest,0.6263027295
+CogComp/trec,bert-base-uncased,0.974
+CreativeLang/ColBERT_Humor_Detection,deepset/roberta-base-squad2,0.9776
+SemEvalWorkshop/emo,bert-base-uncased,0.857
+SetFit/enron_spam,xlm-roberta-base,0.991
+SetFit/go_emotions,j-hartmann/emotion-english-distilroberta-base,0.5616
+SetFit/subj,bert-large-uncased,0.9695
+Yelp/yelp_review_full,roberta-base,0.6236
+ade-benchmark-corpus/ade_corpus_v2 (Ade_corpus_v2_classification),emilyalsentzer/Bio_ClinicalBERT,0.925170068
+armanc/pubmed-rct20k,bert-base-uncased,0.8404
+cardiffnlp/tweet_eval (emoji),cardiffnlp/twitter-roberta-base-sentiment-latest,0.4344
+cardiffnlp/tweet_eval (emotion),cardiffnlp/twitter-roberta-base-sentiment-latest,0.8402533427
+cardiffnlp/tweet_eval (hate),cardiffnlp/twitter-roberta-base-sentiment-latest,0.5882154882
+cardiffnlp/tweet_eval (irony),microsoft/deberta-base,0.7193877551
+cardiffnlp/tweet_eval (offensive),deepset/roberta-base-squad2,0.8523255814
+cardiffnlp/tweet_eval (sentiment),cardiffnlp/twitter-roberta-base-sentiment-latest,0.7272
+ccdv/patent-classification (abstract),bert-large-uncased-whole-word-masking-finetuned-squad,0.6438
+climatebert/climate_commitments_actions,j-hartmann/emotion-english-distilroberta-base,0.8375
+climatebert/climate_detection,microsoft/deberta-base,0.9775
+climatebert/climate_specificity,roberta-base,0.834375
+climatebert/tcfd_recommendations,roberta-base,0.79
+clinc/clinc_oos (plus),roberta-base,0.8768
+coastalchp/ledgar,distilroberta-base,0.800960192
+community-datasets/yahoo_answers_topics,bert-large-uncased,0.7004
+cornell-movie-review-data/rotten_tomatoes,distilbert-base-uncased-finetuned-sst-2-english,0.9015009381
+dair-ai/emotion (split),cardiffnlp/twitter-roberta-base-sentiment-latest,0.9175
+fancyzhx/amazon_polarity,cardiffnlp/twitter-roberta-base-sentiment-latest,0.9572
+fancyzhx/dbpedia_14,bert-large-uncased,0.992
+google-research-datasets/google_wellformed_query,cardiffnlp/twitter-roberta-base-sentiment-latest,0.4285714286
+google-research-datasets/poem_sentiment,cardiffnlp/twitter-roberta-base-sentiment-latest,0.9038461538
+iastate/onestop_english,ProsusAI/finbert,1.0
+jackhhao/jailbreak-classification,bert-large-uncased-whole-word-masking-finetuned-squad,0.9961832061
+liaad/newspop,bert-large-uncased,0.9972
+mteb/banking77,roberta-base,0.9141742523
+nyu-mll/glue (cola),bert-large-uncased,0.828379674
+odegiber/hate_speech18,cardiffnlp/twitter-roberta-base-sentiment-latest,0.898630137
+perctrix/unfair_tos,j-hartmann/emotion-english-distilroberta-base,0.9488054608
+raquiba/Sarcasm_News_Headline,roberta-base,0.9188
+river-martin/web-of-science-with-label-texts,bert-large-uncased,0.8592
+sh0416/ag_news,deepset/roberta-base-squad2,0.9132
+sonos-nlu-benchmark/snips_built_in_intents,ProsusAI/finbert,1.0
+stanfordnlp/imdb,roberta-base,0.9424
+stanfordnlp/sst2,microsoft/deberta-base,0.9231651376
+takala/financial_phrasebank,deepset/roberta-base-squad2,0.9391069012
+tdavidson/hate_speech_offensive,nlptown/bert-base-multilingual-uncased-sentiment,0.9060104881
+toxigen/toxigen-data (annotated),roberta-base,0.5531914894
+tuetschek/atis,xlm-roberta-base,0.9842342342
+ucirvine/sms_spam,deepset/roberta-base-squad2,0.9964157706
+zefang-liu/phishing-email-dataset,deepset/roberta-base-squad2,0.9699570815
+zeroshot/twitter-financial-news-sentiment,roberta-base,0.8806532663

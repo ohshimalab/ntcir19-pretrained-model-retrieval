@@ -1,5 +1,6 @@
-import os
 import json
+import os
+
 import pandas as pd
 
 # --- CONFIGURATION ---
@@ -34,7 +35,7 @@ def aggregate_results():
 
     print(f"Found {len(tasks_df)} tasks and {len(models_df)} models.")
     print(f"Scanning for {total_combinations} potential experiments...")
-
+    missed_count = 0
     for _, task_row in tasks_df.iterrows():
         raw_dataset = str(task_row["dataset_name"]).strip()
 
@@ -98,10 +99,12 @@ def aggregate_results():
                     record["status"] = "Corrupted"
             else:
                 print(f"Missing results for: {folder_name}")
+                missed_count += 1
 
             results_data.append(record)
             processed_count += 1
-
+    print(f"Processed {processed_count}/{total_combinations} combinations.")
+    print(f"Total missing experiments: {missed_count}")
     # 5. Export to CSV
     df = pd.DataFrame(results_data)
     df.to_csv(OUTPUT_CSV, index=False)
