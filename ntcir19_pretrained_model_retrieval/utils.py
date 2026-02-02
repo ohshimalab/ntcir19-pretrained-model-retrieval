@@ -55,18 +55,26 @@ def load_dataset_safe(row: pd.Series, revision: str) -> Tuple[Optional[DatasetDi
     subset = row["subset"]
     try:
         if pd.isna(subset):
-            ds = load_dataset(dataset_name, revision=revision)
-            subset_name = "default"
+            try:
+                ds = load_dataset(dataset_name, revision=revision)
+                subset_name = "default"
+            except Exception:
+                ds = load_dataset(dataset_name)
+                subset_name = "default"
         else:
-            ds = load_dataset(dataset_name, subset, revision=revision)
-            subset_name = subset
+            try:
+                ds = load_dataset(dataset_name, subset, revision=revision)
+                subset_name = subset
+            except Exception:
+                ds = load_dataset(dataset_name, subset)
+                subset_name = subset
         return ds, subset_name
     except Exception as e:
         logger.error(f"Error loading {dataset_name}: {e}")
         return None, None
 
 
-def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42) -> Tuple[Dataset, Dataset, Dataset]:
+def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42, label_col=None) -> Tuple[Dataset, Dataset, Dataset]:
     """
     Extract or create train/validation/test splits from a dataset.
 
@@ -96,6 +104,35 @@ def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42) -> Tuple[Dataset
         ds_split_2 = ds_split_1["test"].train_test_split(test_size=VAL_TEST_SPLIT_RATIO, seed=seed)
         ds_val = ds_split_2["train"]
         ds_test = ds_split_2["test"]
+
+        if label_col is not None:
+            # Ensure all splits have all labels represented
+            all_labels = set()
+            for split in [ds_train, ds_val, ds_test]:
+                all_labels.update(set(split[label_col]))
+            missing_label = False
+            for split_name, split in zip(["train", "val", "test"], [ds_train, ds_val, ds_test]):
+                split_labels = set(split[label_col])
+                missing_labels = all_labels - split_labels
+                if missing_labels:
+                    missing_label = True
+                    logger = get_logger()
+                    logger.warning(f"DATA WARNING: The {split_name} split is missing labels: {missing_labels}")
+            if missing_label:
+                logger.info("Resplitting the dataset to ensure all labels are represented in each split.")
+                # Split again using sklearn stratified method
+                from sklearn.model_selection import train_test_split
+
+                df_full = pd.DataFrame(ds[train_split])
+                df_train_val, df_test = train_test_split(
+                    df_full, test_size=VAL_TEST_FROM_TRAIN_RATIO, random_state=seed, stratify=df_full[label_col]
+                )
+                df_train, df_val = train_test_split(
+                    df_train_val, test_size=VAL_TEST_SPLIT_RATIO, random_state=seed, stratify=df_train_val[label_col]
+                )
+                ds_train = Dataset.from_pandas(df_train.reset_index(drop=True))
+                ds_val = Dataset.from_pandas(df_val.reset_index(drop=True))
+                ds_test = Dataset.from_pandas(df_test.reset_index(drop=True))
 
     elif pd.isna(test_split):
         # Use existing val as test, create new val from train

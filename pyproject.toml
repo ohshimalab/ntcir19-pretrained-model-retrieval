@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "datasets>=4.4.1",
+    "huggingface-hub[hf-xet]>=0.36.0",
     "ipykernel>=7.1.0",
     "kaleido>=1.2.0",
     "mplcairo>=0.6.1",

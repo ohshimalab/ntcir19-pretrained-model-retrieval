@@ -154,7 +154,7 @@ def _process_single_task(row: pd.Series, cfg_download, logger) -> None:
     if ds is None:
         return
 
-    ds_train, ds_val, ds_test = get_splits(ds, row, cfg_download.seed)
+    ds_train, ds_val, ds_test = get_splits(ds, row, cfg_download.seed, row["label_col"])
 
     df_train, df_val, df_test = _process_all_splits(
         ds_train,
