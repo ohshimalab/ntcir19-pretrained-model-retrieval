@@ -280,7 +280,10 @@ def download_datasets(
     _validate_task_columns(df)
 
     for index, row in df.iterrows():
-        _process_single_task(row, dl, logger)
+        try:
+            _process_single_task(row, dl, logger)
+        except Exception:
+            logger.exception(f"FAILED processing task at row {index} ({row['dataset_name']})")
 
 
 def _finetune_distributed(

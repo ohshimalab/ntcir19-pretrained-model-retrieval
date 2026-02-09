@@ -5,6 +5,7 @@ import pandas as pd
 from datasets import Dataset, DatasetDict, load_dataset
 
 from .logger_setup import get_logger
+from .splitting import preserve_features_from_df, safe_stratified_resplit
 
 # Dataset split ratio constants
 VAL_TEST_FROM_TRAIN_RATIO = 0.2  # When both val and test are missing
@@ -92,9 +93,19 @@ def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42, label_col=None) 
     Returns:
         Tuple of (train_dataset, val_dataset, test_dataset)
     """
+    logger = get_logger()
+
     train_split = row["train_split"]
     val_split = row["val_split"]
     test_split = row["test_split"]
+
+    # Normalize label_col: treat NaN as None
+    if pd.isna(label_col):
+        label_col = None
+
+    # Validate train split exists
+    if train_split not in ds:
+        raise ValueError(f"train_split '{train_split}' not found in dataset keys: {list(ds.keys())}")
 
     if pd.isna(val_split) and pd.isna(test_split):
         # Split train into 80/20, then 20 into 10/10 (val/test)
@@ -116,26 +127,23 @@ def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42, label_col=None) 
                 missing_labels = all_labels - split_labels
                 if missing_labels:
                     missing_label = True
-                    logger = get_logger()
                     logger.warning(f"DATA WARNING: The {split_name} split is missing labels: {missing_labels}")
             if missing_label:
-                logger.info("Resplitting the dataset to ensure all labels are represented in each split.")
-                # Split again using sklearn stratified method
-                from sklearn.model_selection import train_test_split
-
+                logger.info("Attempting stratified resplit to ensure all labels are represented in each split.")
                 df_full = pd.DataFrame(ds[train_split])
-                df_train_val, df_test = train_test_split(
-                    df_full, test_size=VAL_TEST_FROM_TRAIN_RATIO, random_state=seed, stratify=df_full[label_col]
+                stratified = safe_stratified_resplit(
+                    df_full, label_col, seed, VAL_TEST_FROM_TRAIN_RATIO, VAL_TEST_SPLIT_RATIO, logger
                 )
-                df_train, df_val = train_test_split(
-                    df_train_val, test_size=VAL_TEST_SPLIT_RATIO, random_state=seed, stratify=df_train_val[label_col]
-                )
-                ds_train = Dataset.from_pandas(df_train.reset_index(drop=True))
-                ds_val = Dataset.from_pandas(df_val.reset_index(drop=True))
-                ds_test = Dataset.from_pandas(df_test.reset_index(drop=True))
+                if stratified is not None:
+                    df_train, df_val, df_test = stratified
+                    ds_train = preserve_features_from_df(df_train, ds[train_split])
+                    ds_val = preserve_features_from_df(df_val, ds[train_split])
+                    ds_test = preserve_features_from_df(df_test, ds[train_split])
 
     elif pd.isna(test_split):
         # Use existing val as test, create new val from train
+        if val_split not in ds:
+            raise ValueError(f"val_split '{val_split}' not found in dataset keys: {list(ds.keys())}")
         ds_test = ds[val_split]
         ds_train_val = ds[train_split].train_test_split(test_size=VAL_FROM_TRAIN_RATIO, seed=seed)
         ds_train = ds_train_val["train"]
@@ -143,6 +151,8 @@ def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42, label_col=None) 
 
     elif pd.isna(val_split):
         # Use existing test, create val from train
+        if test_split not in ds:
+            raise ValueError(f"test_split '{test_split}' not found in dataset keys: {list(ds.keys())}")
         ds_test = ds[test_split]
         ds_train_val = ds[train_split].train_test_split(test_size=VAL_FROM_TRAIN_RATIO, seed=seed)
         ds_train = ds_train_val["train"]
@@ -150,6 +160,9 @@ def get_splits(ds: DatasetDict, row: pd.Series, seed: int = 42, label_col=None) 
 
     else:
         # All splits specified
+        for name in (train_split, val_split, test_split):
+            if name not in ds:
+                raise ValueError(f"split '{name}' not found in dataset keys: {list(ds.keys())}")
         ds_train = ds[train_split]
         ds_val = ds[val_split]
         ds_test = ds[test_split]
