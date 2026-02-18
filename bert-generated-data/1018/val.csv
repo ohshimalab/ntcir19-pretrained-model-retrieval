@@ -1,0 +1,101 @@
+text,label
+"After the recent update, some users are experiencing slow load times when accessing the reporting features, which is affecting their ability to generate timely insights.",Medium
+"The application crashed completely during peak hours, resulting in a total loss of data for all users connected at that time. This is unacceptable and must be fixed ASAP as it affects our client relationships.",Critical
+"There seems to be an issue with the payment processing feature, as transactions are failing unexpectedly. This is critical for our customers and needs your immediate attention to fix it.",High
+"The chat support tool is malfunctioning, leading to delays in customer responses. This is affecting our service level agreements and could result in dissatisfaction among our clients.",High
+I have a question about how to change my notification settings in the app. It’s not very clear in the user guide. Can someone guide me through it?,Low
+"The email service is down for half of our team, making it impossible for them to communicate effectively during this critical project phase; we need a solution ASAP.",High
+"We've noticed some inconsistencies with the data syncing between our database and the app that are causing minor delays in updates. Users are a bit frustrated, but it doesn't completely stop their workflow.",Medium
+Reports have come in about a recurring bug that prevents users from exporting data they need for their weekly reports. This is a time-sensitive issue that many are relying on to complete important tasks.,High
+A significant outage is occurring; multiple departments are unable to use the system due to a failure in the server. This is critically impacting productivity and must be addressed immediately.,Critical
+"After the latest update, my application crashes when I try to open specific files. It's not every file, just certain ones that seem affected, causing extra downtime.",Medium
+"We're experiencing a total server outage since yesterday, and no one is able to log in to their accounts. Please escalate this issue immediately as it is affecting all departments.",Critical
+"The mobile app is completely non-functional after the latest update, and it’s impacting a large number of users who rely on it for real-time data access. Please find a fix urgently!",Critical
+"There's an error message popping up every time we attempt to access our data analytics reports. Since these reports are crucial for our decision-making, we really need this sorted out without delay.",High
+"Since the patch update, the database queries are running much slower than usual. It’s affecting productivity as users wait too long for results. We need to address this before it becomes a bigger problem.",High
+"Massive user impact: The core functionality of our software is not operational, leading to financial losses. Immediate technical support intervention is required to resolve this issue as it is affecting multiple accounts.",Critical
+"I noticed that the database queries are running a bit slower than usual, especially for reports generated at peak hours. It’s not a complete crash but needs attention.",Medium
+"The dashboard widgets are not loading correctly, which is a significant hindrance to our monitoring and reporting needs.",High
+"Our main database server is down, and it seems to be affecting all users. We cannot access any customer records, and this is halting all operations. Please prioritize this issue immediately!",Critical
+Reports indicate that the system has crashed during a critical period of our project launch. We need to diagnose this failure immediately to mitigate further impact.,Critical
+"There has been a significant system failure in the main database and it appears to be affecting login processes across the board. We need help getting this back up, because we’re losing valuable time!",Critical
+"Our software keeps crashing when I run the analytics module with large data sets. While it’s not down for everyone, it does hinder my ability to complete projects on time. Can we look into optimizing this?",Medium
+There's a glitch in the payment gateway where transactions fail intermittently. This is creating confusion and dissatisfaction among our users.,High
+"We're getting error messages while trying to access our shared documents, and this is disrupting our workflow significantly. I need help in resolving this ASAP!",High
+Just a quick question: Is there a way to customize the notifications I receive from the application?,Low
+There appears to be a bug where certain icons on the dashboard do not load properly. This is not critical but has caused some confusion among the team trying to use the tool efficiently.,Medium
+"I’ve noticed that the application is running extremely slow, especially during peak usage hours. This is causing significant delays in processing user requests and needs immediate attention.",High
+"The main server is down, and this is affecting every department in the organization. Without access to critical applications, our operations are at a standstill. Please escalate this to the highest priority!",Critical
+"The application is taking longer than usual to load, and I've noticed some lag when trying to access different features. It affects my workflow, but it's not completely halting my tasks.",Medium
+I need some help updating my payment information on the account. It's been giving me an error when I try to submit.,Low
+I’m looking for information on how to export my data from the platform. Is this something that’s supported?,Low
+"I submitted a ticket about the dashboard not displaying any data after the last update, and it's been pending for too long. This issue is preventing my team from tracking progress efficiently, so we need it fixed ASAP.",High
+"I need some assistance regarding the user manual for my new printer. It doesn't seem to be working properly, and I was hoping to find clearer instructions.",Low
+"Could you please clarify the steps for resetting my password on the company portal? It’s been a while since I last did it, and I want to make sure I follow the right procedure.",Low
+"An unexpected server failure has caused the entire network to go offline. All users are unable to work, and this has immediate financial implications for our operations. We need this resolved as soon as possible.",Critical
+"Hi team, just reaching out to find out about your business hours. I want to make sure I can reach you if I have any questions. Thanks!",Low
+"There’s a major outage in the network, and multiple departments are reporting that they cannot connect to any of the internal applications. This is impacting our customer service and sales operations extensively.",Critical
+"All clients are reporting that the software is failing to respond, and we have not been able to determine a workaround. This is critical for our ongoing operations.",Critical
+"I need assistance with configuring the email app on my phone. I believe I have the correct settings, but it’s still not syncing properly. Just a few pointers would be great!",Low
+"There is a bug in the new update that prevents me from exporting documents correctly. While I can still access the documents, the formatting issues need to be looked into urgently.",Medium
+"Is there a way to get a copy of my receipts for previous purchases? I don't need them today, just when you get a chance.",Low
+"Hello, I need assistance on how to update my profile picture. The current one is quite old and I'd like to refresh it.",Low
+Could you send me the user manual for the device? I misplaced mine and need to check some functions.,Low
+"There seems to be a recurring issue with the email notifications not sending out. This is crucial for our communication, as we're missing important updates related to project deadlines.",High
+"After the latest software update, the main feature we rely on for customer support has stopped working completely. This is causing delays in response times to our clients, and we can't afford that right now!",High
+We're experiencing a major issue with our project management software; users can't access their tasks and deadlines are being missed.,High
+"The recent update has caused a critical functionality issue; users cannot log in to their accounts, and this is affecting multiple departments. Immediate assistance is required to rectify this issue.",High
+"After the last update, all web services have gone down, which is impacting our ability to serve clients. This needs to be prioritized because it’s affecting our bottom line significantly.",Critical
+"Critical failure in the payment processing system has caused all transactions to be halted, leading to a backlog of customer orders. We need a fix FAST to prevent further losses!",Critical
+I’m currently facing a significant issue with the mobile app where it crashes every time I try to upload a file. This is critical because I need to submit my documents before the end of the day!,High
+Could you please provide the user guide for the new software update? I just want to clarify some features that I haven't used yet.,Low
+"I have a recurring issue where the notification alerts for updates are unreliable. Sometimes I miss important reminders, which can slow down my project timelines. Can anyone assist?",Medium
+"There is a slight delay when saving documents in the cloud. It's taking a few extra seconds, and it only seems to happen with larger files.",Medium
+"We have a major system failure that has crashed the database server. All users are unable to retrieve their data, which is critical for ongoing projects and deadlines. Please escalate this as it is a severe disruption.",Critical
+"I received multiple complaints from users about the slow load times of our website. It's becoming increasingly difficult for them to complete their purchases, and this impacts our sales performance directly.",High
+"The integration with the third-party payment gateway is failing intermittently, causing disruptions in order processing. This needs immediate troubleshooting and resolution.",High
+"Users are reporting that the new software update has caused major functionality problems, particularly with the data entry forms. It's crucial that we resolve this quickly as it affects workflow for multiple teams.",High
+"I can't access the reporting feature in the application, and this is affecting my ability to complete my monthly reports on time. Please prioritize this as several team members depend on this functionality.",High
+Can someone please let me know if we have the option to customize our notification preferences?,Low
+"Our cloud service provider has reported an issue that's affecting all clients simultaneously, and as a result, we can't access any of our online resources. This has brought our operations to a standstill!",Critical
+"I have a few questions about how to integrate the new API with our existing systems. It's not urgent, but I'd like some clarification to ensure everything aligns properly.",Medium
+"The search functionality in the application has been lagging lately. It takes a few extra seconds to return results, and while it’s manageable, I believe it can be improved further to enhance user experience.",Medium
+Quick question: how can I create a subfolder in my email? I can't seem to find that option anywhere!,Low
+"After the last update, I’m encountering some issues with formatting in the reports I generate. It’s not completely broken, but the inconsistencies are bothersome. Can you please check if other users are facing similar issues?",Medium
+I am unable to log in to my account since yesterday. This is impacting my ability to complete urgent tasks and access necessary tools for my project. Please look into this as soon as possible!,High
+"I overheard some team members mentioning that the data synchronization process is slower than usual. They haven’t encountered any failures, but it’s certainly impacting their workflow.",Medium
+I can't access my account due to an error message that says I'm locked out. This is impacting my ability to complete important tasks for my team and I need urgent assistance to regain access.,High
+"I received an error message when I tried to upload my document. It's not urgent, but I would appreciate any advice on how to fix this in the future.",Low
+"All users are currently unable to access their accounts, which is causing a halt in all operations. This issue seems to have started after the last system update and needs immediate attention to prevent further disruption.",Critical
+"One of our team members is having trouble connecting to the server occasionally; it doesn’t happen all the time but when it does, it interrupts their tasks. A deep dive into the connectivity might be needed to spot the issue.",Medium
+"I have a minor issue with the display settings on my monitor; it flickers occasionally. Not urgent, but I’d like to get it sorted eventually.",Low
+"I’m experiencing an occasional delay when trying to save changes in documents. It’s not consistently an issue, but it is noticeable at times and would be worth checking out.",Medium
+"Our entire team is unable to access the company server since this morning, which has brought all ongoing projects to a halt. We need immediate assistance to restore access as soon as possible.",Critical
+"Users are experiencing a total lack of functionality in our project management tool, rendering it useless for tracking progress on active projects. Immediate resolution is essential.",Critical
+"I’m experiencing a delay in receiving notifications after changes are made in the system. While it doesn’t stop me from working, it is a bit annoying when I miss immediate updates. Can you check if there's a setting that might speed this up?",Medium
+I noticed that my mouse is acting a bit strange; it sometimes jumps around. Could you tell me if there’s a way to adjust its settings?,Low
+"There’s a widespread issue with our ticketing system being inaccessible, preventing customer service agents from addressing client requests. This is a huge problem affecting all customer interactions right now.",Critical
+"A recurring issue with the email notification service has been reported, where users are not receiving alerts for important updates. This is affecting their engagement and response times significantly, so this needs to be fixed.",High
+We are facing a total system outage that has rendered all user accounts inactive. This is causing a significant delay in workflow across departments and requires immediate escalation to the technical team.,Critical
+"The latest software update seems to have caused some minor issues. Some features are not responding properly, but the main functions are still usable.",Medium
+"How can I unsubscribe from the promotional emails? I appreciate the info, but I'm getting too many updates and just want to streamline things a bit.",Low
+I have a question regarding the latest software update. Can you tell me if it’s possible to roll back to an earlier version?,Low
+Can you please provide the user manual for the new printer model we bought? It would really help us set it up properly.,Low
+"There seems to be a glitch in the reporting tool where the charts aren't displaying correctly. The data is there, but it's hard to interpret without visuals. Might need some assistance fixing this.",Medium
+"Can you check if my license key is still valid? I believe it's supposed to renew automatically, but I haven’t received any confirmation.",Low
+There have been multiple reports of crashes occurring when trying to export files from our software; this has been a headache for those needing to meet deadlines.,High
+"The email notifications for order confirmations are not being sent out consistently. This is leading to confusion for our customers, and we need this functionality to work flawlessly to maintain client trust.",High
+Could you please let me know how to reset my password? I can't remember it and need access to my account.,Low
+"I've noticed some delays when saving files in the cloud. It's not a complete failure, but it happens often enough to disrupt my workflow. Could someone look into this?",Medium
+"We've lost connectivity to the email server, and this is affecting our ability to communicate with clients. This issue needs urgent attention as it disrupts our day-to-day operations.",Critical
+"I need urgent help as our database server is completely non-responsive, leading to significant downtime for various applications. This is affecting not just one team but the entire company workflow. Please escalate this as we can't afford prolonged outages.",Critical
+"I would like to request a change to the user permissions settings, as I've noticed some users are able to access features they shouldn't. This isn't urgent but does need attention to maintain security.",Medium
+Can you please send me the instructions for resetting my password? I seem to have misplaced my notes.,Low
+"The new update caused some formatting issues in my documents. While I can still edit them, certain elements are not displaying correctly which can be quite distracting during presentations.",Medium
+"The upload feature is working, but it takes a longer time than usual to process files after they’ve been uploaded. I can still use the files, but the waiting is frustrating, especially with tight deadlines on projects.",Medium
+"A couple of users have reported that the search function isn't returning accurate results lately. It's a bit frustrating, and I think we should investigate this issue further.",Medium
+I'm just reaching out to ask if there’s a quick way to access the user manual for the new software update?,Low
+"There’s been a slowdown in the application performance, especially during peak hours of usage. It’s not a total stop, but productivity is definitely impacted, so any assistance would be appreciated.",Medium
+"Do you have any tips for optimizing the app's performance on older devices? I feel like it's running a bit slow lately, but it's not a big deal.",Low
+"The network connectivity has completely failed, affecting multiple systems and users. We need a thorough investigation and quick fix to restore normal operations.",Critical
+"There seems to be a major failure in the network infrastructure causing widespread outages. All departments are impacted, and we need a technical team to address this immediately.",Critical

@@ -1,0 +1,101 @@
+text,label
+"The payment system is down, causing us to lose revenue. We cannot wait for the next support slot; this situation is critical!",service_escalation
+"I'm having a serious issue with my server going down repeatedly, and I need immediate assistance to get it back online. The usual troubleshooting steps haven't worked, and it's impacting our business operations significantly. Please escalate this to someone who can help right away.",service_escalation
+I keep getting a blue screen error on my computer. What are the recommended troubleshooting steps I should take to investigate this?,troubleshooting_request
+I changed my email password but now I cannot log in on my phone. Please provide instructions on how to update my login credentials on mobile.,troubleshooting_request
+"I’ve reported the outage multiple times today, but the issue persists without resolution. This is impacting our customer service severely; I need management to prioritize this support ticket immediately.",service_escalation
+"I can’t access my account due to a locked status, and it’s been pending for over two days. I need immediate assistance to resolve this.",service_escalation
+"The network is down for several users, and standard procedures aren't working. This situation requires prompt escalation to network support.",service_escalation
+"Could you please get a senior technician to contact me regarding the email service being down? All employees rely on it, and I’m not getting any responses from the regular support team.",service_escalation
+"My laptop is running extremely slow, and I've tried a few things but nothing has worked. What troubleshooting steps can I take to improve its performance?",troubleshooting_request
+My laptop won't charge even though the adapter seems fine. Can you provide a step-by-step method to identify the problem?,troubleshooting_request
+"My internet connection has dropped multiple times today, and it’s affecting my work. Can someone escalate this to a manager, please?",service_escalation
+"My account has been locked due to suspicious activity, and I can't submit a help request because I can’t log in. I require immediate assistance to resolve this issue.",service_escalation
+There seems to be a persistent issue with my laptop's battery life draining too quickly. What troubleshooting steps can you recommend to identify the cause?,troubleshooting_request
+"I reported an issue last week regarding our network connectivity, and it hasn't been resolved. This is impacting our productivity, and I need an urgent follow-up from someone senior in support.",service_escalation
+This is urgent: my system has been down for hours and it's affecting our operations. Can someone escalate this issue immediately?,service_escalation
+I had a scheduled maintenance for my server last week and the issues still persist. I can’t afford any more downtime; please escalate my situation to the highest level.,service_escalation
+"We’re facing severe disruptions due to the software not functioning as expected, and the current support is not equipped to handle this issue. Please escalate it right away!",service_escalation
+"All of our employees are unable to log into their accounts due to an error message. This is affecting productivity, and we require immediate assistance from higher support.",service_escalation
+"There’s a recurring issue with the software that’s halting our operations. I need a specialist to address this, as it’s causing significant downtime.",service_escalation
+I think I might have accidentally changed some settings on my device. How can I revert them back or reset to defaults?,troubleshooting_request
+"The Wi-Fi keeps disconnecting randomly, and I’ve tried resetting the router multiple times. What’s the next step?",troubleshooting_request
+"Whenever I try to save my work, the application crashes and I lose everything. What can I do to prevent this from happening?",troubleshooting_request
+"My phone is not charging properly, and sometimes it shows an error message. What are the steps I can take to troubleshoot this issue before sending it in for repair?",troubleshooting_request
+"I'm having issues with my email application constantly crashing. I've already tried restarting my computer, but it didn't help. Could you guide me through some more troubleshooting steps?",troubleshooting_request
+I keep getting an error message when I try to open the software. It says 'application not responding'. What are the steps I should follow to resolve this? Please help!,troubleshooting_request
+"I’ve run into a major error while trying to update our server configuration, and I really need a supervisor’s help to sort this out before the client impacts.",service_escalation
+I received an error message on the application that seems critical and it's preventing us from processing orders. We need technical support to address this issue at a higher level right away.,service_escalation
+I'm experiencing repeated outages with my internet connection. This has been ongoing for days and I've tried everything suggested in your troubleshooting guide. I really need someone to escalate this issue so it can be resolved promptly.,service_escalation
+"I recently updated my software, and now my device isn't working correctly. What are the steps I can take to troubleshoot this problem?",troubleshooting_request
+"I have a blue screen of death on my PC, and I'm not sure what to do next. What steps should I take to diagnose the problem?",troubleshooting_request
+There seems to be a problem with the new software I installed; it keeps giving me error messages. Can you outline how I might fix this?,troubleshooting_request
+"I’ve attempted to install the new software update multiple times, but each time it fails. This is becoming a serious bottleneck in my projects, and I believe a specialist's input is required to resolve this issue.",service_escalation
+"My gaming console isn't displaying on the TV, and I can't figure out what went wrong. Could you explain how to check the connections and reset it?",troubleshooting_request
+The application is crashing every time I try to save my work. Can you walk me through some troubleshooting steps to get it working again?,troubleshooting_request
+I’m facing issues with my smartphone not charging properly. What are the steps to determine if the charger or the phone is faulty?,troubleshooting_request
+I think my printer isn't connecting to my Wi-Fi properly. Could you help me figure out how to reset the settings or check the connection?,troubleshooting_request
+The product I ordered is defective and I need immediate assistance to get a replacement. This has been a problem for weeks now!,service_escalation
+I receive error code 0x80070057 when trying to back up files. What can I do to eliminate this error and complete the backup?,troubleshooting_request
+My phone is stuck on the startup screen and I don't know how to get it working again. What should I do?,troubleshooting_request
+"Our printer has stopped working, and I’ve already gone through all the basic troubleshooting steps. Nothing has fixed it. This is affecting our workflow, so I need this escalated to ensure we get a replacement or repair immediately.",service_escalation
+"I’m unable to connect my Bluetooth headphones to my smartphone. I’ve tried a few things, but nothing seems to work. Can you provide a detailed guide to troubleshoot this?",troubleshooting_request
+I can't access my account after multiple password resets. This is a major issue for my daily operations. I require immediate help to regain access!,service_escalation
+"I attempted the troubleshooting steps provided, but nothing worked. This situation is urgent, and I can't wait for another typical follow-up from the standard support.",service_escalation
+"I need immediate help with my account. I’ve checked everything and nothing seems to work, this needs to be looked at by a senior technician right away!",service_escalation
+My laptop keeps freezing whenever I try to open certain applications. What steps can I take to resolve this?,troubleshooting_request
+My email app keeps crashing every time I open it. What troubleshooting steps can I take to fix this issue?,troubleshooting_request
+"I've been dealing with repeated software crashes all week, and my previous support tickets have gone unanswered. This situation is critical and needs urgent management involvement.",service_escalation
+My smartphone won’t charge anymore even though I’ve tried different cables and outlets. What are the best steps to determine if it’s a hardware issue?,troubleshooting_request
+"The last two installations of the new software have failed, and it’s causing real problems for our team. I believe we need someone from the deployment team to handle this situation promptly.",service_escalation
+"My internet is down and it's affecting my work. This is urgent, can someone from management please assist?",service_escalation
+"I’ve followed all the troubleshooting steps for the mobile app not syncing, but nothing has worked. Could you have a senior technician look into this right away?",service_escalation
+"The payment processing system is down, and I've already lost business today. This needs to be addressed by someone higher up, or I might have to consider switching providers.",service_escalation
+"I'm experiencing a critical issue with the network, and it has been down for over an hour. Can someone escalate this to the IT manager ASAP?",service_escalation
+The software crashes every time I try to open it. I need access for a project due tomorrow. I believe this needs immediate attention from a higher-level technician.,service_escalation
+"I raised a ticket regarding my application bug, but the problem remains unresolved. This is critical for my work, so I need this to be pushed up to someone who can resolve it right away.",service_escalation
+"My team is experiencing a significant delay in the system response time, and we can't afford to wait for the regular support. Please get this escalated immediately!",service_escalation
+"There’s a strange noise coming from my hard drive, and I think it might be failing. What steps can I take to diagnose the issue before it gets worse?",troubleshooting_request
+The latest update has caused compatibility issues with our software. We require immediate escalation for a fix as it’s impacting all users in our department.,service_escalation
+I can't seem to access my account due to a password issue. What are the exact steps I need to follow to reset it properly?,troubleshooting_request
+I've been getting an error message when trying to upload files to the server. Can you walk me through the troubleshooting steps to resolve this?,troubleshooting_request
+"Whenever I try to access the application, it crashes. I need some help figuring out how to troubleshoot this issue on my Mac. Is there a guide or something?",troubleshooting_request
+I've encountered a critical software bug during the update that’s impacting our entire workflow; I really need urgent support to resolve this matter.,service_escalation
+I urgently need someone to look into my account; I've been locked out for hours and can't access my files!,service_escalation
+I'm having issues with my laptop battery draining too quickly. Could you provide instructions on how to check the battery health?,troubleshooting_request
+"I'm experiencing repeated system crashes that prevent me from accessing my files. This issue has persisted for over a week, and previous troubleshooting steps haven't worked. I need someone to look into this urgently.",service_escalation
+"I’m unable to process transactions due to system errors, and I can't find a solution online. This needs to be elevated to ensure we maintain our service commitments.",service_escalation
+I think my antivirus software isn't working properly. What steps can I take to troubleshoot this issue? I've already tried reinstalling it.,troubleshooting_request
+Can you walk me through the process of reinstalling the graphics driver on my desktop? I'm not sure how to begin the uninstallation.,troubleshooting_request
+I'm getting an error message whenever I try to save my work in the software. What are the best practices to troubleshoot this problem?,troubleshooting_request
+"The screen on my desktop is flickering intermittently, and I suspect it might be a graphics driver issue. Can you provide instructions on how to update the driver?",troubleshooting_request
+"My internet keeps disconnecting, and I don’t know what to do. Can you guide me through some steps to fix this?",troubleshooting_request
+"We're still waiting for a resolution on the last issue we raised, and it’s been days. Can this be escalated so we can get some answers?",service_escalation
+I accidentally deleted some important files and need help recovering them. Could you offer me a step-by-step process for file recovery?,troubleshooting_request
+There seems to be a serious issue with the network configuration that I can't seem to address. I think it would be best if someone from higher support could take over this immediately.,service_escalation
+"We've been facing intermittent connectivity issues for the past few days, and it's seriously hampering our productivity. I need this to be prioritized and addressed by the senior technical team.",service_escalation
+"I notice that my internet connection drops randomly throughout the day. I've rebooted my modem several times, but it doesn't seem to fix the problem. What else can I try?",troubleshooting_request
+"Every time I try to open the application, it crashes. What should I do to resolve this? If you could provide detailed instructions, that would be great.",troubleshooting_request
+I changed my Wi-Fi password and now none of my devices can connect. Can you guide me on how to get them back online?,troubleshooting_request
+"There seems to be a recurring issue with the software crashes every time I try to save my work. I've already tried restarting my computer, and nothing changes. Please escalate this issue to a supervisor.",service_escalation
+The security breach alert I received is concerning and needs immediate attention from a senior technician. I cannot resolve this on my own without guidance from someone at a higher level.,service_escalation
+My computer's fan is running loudly and I suspect it might be overheating. How do I check the temperature and clean it? Any advice would be appreciated.,troubleshooting_request
+I think there’s a hardware issue with my device. Can you help me figure out if it's something I can fix myself? Please walk me through the diagnostic process.,troubleshooting_request
+"I really need someone to look at my account now. I've tried contacting support multiple times, but nothing is being done!",service_escalation
+"I need someone to look at my account immediately; I can't access my files, and this is urgent for my project deadline!",service_escalation
+"I submitted a ticket regarding the malfunctioning printer, but there hasn't been any follow-up. If this isn't addressed urgently, we won't meet our deadlines.",service_escalation
+The audio on my streaming device is out of sync with the video. What troubleshooting steps can I take to resolve this?,troubleshooting_request
+"Can you help me figure out why my internet connection is so slow? I've reset the router, but it doesn't seem to help. What else can I try?",troubleshooting_request
+"I recently updated my printer drivers, but now my printer won't connect to my computer. Can I get some help with this issue? Maybe some troubleshooting steps would work?",troubleshooting_request
+"I cannot access my online account because I forgot my password. I’ve already tried the reset function, but I’m still locked out. What are my options?",troubleshooting_request
+"After the last software update, my device started behaving erratically, and some features aren't working. What should I try to restore normal functionality?",troubleshooting_request
+I think there’s an issue with my network settings. I need a simple guide on how I can access and reset them. Can you help me?,troubleshooting_request
+"I am experiencing repeated errors when attempting to use the software, and I've already submitted two tickets. This is urgent because it's hindering project deadlines, so I need this prioritized.",service_escalation
+"Every time I try to update the software on my tablet, it fails. What troubleshooting steps should I follow to resolve this?",troubleshooting_request
+The latest network outage is affecting our entire operation center. This is not something that can wait for normal troubleshooting; please get a senior technician involved ASAP.,service_escalation
+My email isn't syncing on my phone. I've checked the settings but can't seem to find what's wrong. Are there specific things I should look at?,troubleshooting_request
+"I've tried every troubleshooting step I could find, but the problem persists. It’s critical for our operations, so I need someone with more authority to take my case.",service_escalation
+"My account has been locked out, and I’ve tried all the recovery options. I really need access restored urgently because I have an important presentation. Can someone from the higher support team help me?",service_escalation
+"My device is experiencing a hardware failure, and I need immediate help from the technical team. Can we speed up the ticket on this?",service_escalation
+I noticed that my laptop's battery drains very fast. Would someone be able to share some troubleshooting steps to help extend my battery life?,troubleshooting_request
+"I just upgraded my software, and now my computer is running slow. Please tell me how to speed it up again. I need detailed steps to follow.",troubleshooting_request

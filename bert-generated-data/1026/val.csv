@@ -1,0 +1,104 @@
+text,label
+"When I was entering the office, a man in a suit asked me if I could let him in since he had left his access card in his car, and he looked just like our HR director.",Tailgating
+"Due to a recent security update, we need to confirm your payment information. Failure to do so will result in account termination. Login now to avoid any interruptions.",Phishing
+"Hi, I'm calling from the support team of your internet provider. There seems to be an issue with your account setting. I need to confirm your account number and the password associated with it to assist you right away. We're here to help!",Pretexting
+"We noticed unusual logins to your account, and we need to verify your information to ensure your safety. Can you send over your full name and date of birth?",Pretexting
+I was told that you recently updated your access credentials. Can you provide the details on what changes you made?,Quizzing
+Urgent: Your payment could not be processed. Please confirm your billing address and credit card information by clicking the link below to avoid service disruption!,Phishing
+"I work closely with management on sensitive projects, so I need to grab some documents from the archive. My badge is in my other jacket; could you help me out for a sec?",Tailgating
+"Hi! We are offering a limited time reward for completing our survey. Click on the link to claim your gift card and enter your email for confirmation. It’s your chance to get something for free, don’t miss out!",Phishing
+"Exciting news! If you refer a friend to our service this week, you'll get a chance to win amazing prizes! Just fill in your details to enter the draw!",Baiting
+"Seeing someone in a suit near the restricted area, I asked if he needed help finding the right access point. He nodded and I held the door open for him, thinking he looked important enough to be there.",Tailgating
+"Great news! We have a special promotion just for you. If you refer a friend, you both will receive a high-value gift card. Simply send us your friend's info and claim your reward!",Baiting
+"Hey there! As a valued community member, you are invited to participate in our special campaign. Fill out your details and receive a mystery gift that could be valued at over $500!",Baiting
+"We've noticed unusual login attempts on your account. To secure your information, kindly follow this link and update your password as soon as possible. It's crucial to act fast!",Phishing
+"Hi, I’m with the city’s water department. We’re running a special program to offer discounts based on income levels. Can you share your financial details to see if you qualify? The information will be kept confidential, promise!",Pretexting
+Surprise! Click this link for a chance to receive an exclusive invite for a VIP event. Spaces are limited!,Baiting
+I heard you attended that cybersecurity conference last week. What were the key topics discussed? I'm trying to catch up on what I missed.,Quizzing
+"Hi! This is Sarah from accounting. We’re updating our client records and need to confirm your banking details urgently. Can you send me your account number? It’s all for security, you know!",Pretexting
+Feeling lucky? Check out this link for a chance to win a brand new smartphone! Just enter your email and a few details to get started!,Baiting
+Join our exclusive trial for a revolutionary new product and you might win an additional bonus! Sign up now to take part and start receiving benefits immediately!,Baiting
+Congratulations! You've been selected for a brand new smartphone just by answering a quick survey. Click here to claim your prize before it runs out!,Baiting
+"I read about some recent phishing attempts, could you tell me what kind of training your staff went through on this?",Quizzing
+I’m conducting a survey about digital security for a research project. Could you please share your username and password to help me understand user preferences better?,Pretexting
+Alert: Your recent order could not be processed. Please provide your payment details by clicking the link in this message to ensure prompt delivery of your items. Thank you for your cooperation!,Phishing
+"There's a message on my screen that looks like it’s from the bank, saying my account is locked due to unusual activity and to call this number. It seems urgent, and I’m worried I might lose access to my funds if I don't act fast!",Pretexting
+"Could you tell me what your favorite password is? I mean, everyone has one they use often, right?",Quizzing
+"I was approached by a person in a security uniform, who said they were investigating a breach and needed to check everyone’s access codes. It felt legitimate since they were in uniform, but I wondered if it was a scam.",Pretexting
+"Your account settings have been altered. To restore your account and avoid any discrepancies, please verify your information using the link below. Time is of the essence!",Phishing
+"Hey, can you remind me of the last time you changed your password? It's important we keep track for security audits.",Quizzing
+"Hey, quick question - can you walk me through how you handle sensitive customer data? I'm trying to understand different approaches used across the industry.",Quizzing
+I was wondering if you could share some tips on how to prevent insider threats. What measures do you have in place?,Quizzing
+"A technician from support will reach out today to fix the issue with your device. To proceed, please provide your employee ID and the device serial number so we can authenticate your request.",Pretexting
+"Hi! I've been made aware of some discrepancies with your recent asset reports. To resolve this, please send over copies of the last three transaction statements as soon as possible to avoid any delays in processing.",Pretexting
+Can you give me a heads-up on the latest compliance training materials? I think they might have updated some of the modules again.,Quizzing
+"Exciting news! If you refer a friend to our service, you could earn some fantastic bonuses! We value your loyalty, so get started today and enjoy the rewards!",Baiting
+"We are doing a survey to enhance our IT security and compliance. Please respond with your username and the last five transactions you made on the internal system, only for verification purposes!",Pretexting
+We noticed you left items in your cart! Here's a 30% discount code to help you complete your purchase. Just enter the code at checkout before it expires!,Baiting
+"You don't want to miss this! An amazing vacation package is waiting for you. Just provide your details, and we’ll send you the booking link.",Baiting
+"Hello! I'm conducting a survey regarding recent updates to our company's employee benefits. To ensure you're included in the changes, could you tell me your position in the company along with your work email?",Pretexting
+"I'm with the IT department and need to check the server room. I forgot my badge at the office, but I can verify with my employee number.",Tailgating
+"Hey! Just checking in, could you remind me of your team’s main projects this quarter? It's tied to our compliance reporting for the board meeting.",Quizzing
+Could you explain how you handle two-factor authentication? I'm trying to get a better system in place for myself.,Quizzing
+What tools do you recommend for monitoring network traffic? I’m just getting started and would appreciate your recommendations!,Quizzing
+"Attention! Your recent purchase needs confirmation. To avoid cancellation, please click here and provide your payment information. This is a limited-time offer, so don't miss it!",Phishing
+I hope you're doing well! I’m reaching out regarding your recent application for our exclusive offer. Could you let me know the last four digits of your credit card for verification?,Pretexting
+"Dear user, we have noticed unusual activity on your account. To ensure your security, please click the link below and provide your account details for verification. Failure to do so may result in a temporary suspension of your services.",Phishing
+"Congratulations! You have been selected for a prize! To claim your reward, we need to confirm your details. Reply with your account number and social security number to proceed. Don’t miss this opportunity!",Phishing
+Urgent! Your recent transaction could not be processed. Please provide your payment details by clicking this link to prevent any inconvenience in the future.,Phishing
+"Dear User, your account has been flagged for suspicious activity. Please verify your identity by clicking this link: http://maliciouslink.com/verify to avoid suspension.",Phishing
+"Dear valued client, we require you to confirm your identity to comply with regulatory changes. Please follow the instructions in the attached link to ensure your data stays protected.",Phishing
+"Hey, can you share your thoughts on the current security measures? I’m gathering feedback to identify areas for improvement, and your insight would be invaluable.",Quizzing
+I’d appreciate it if you could let me through that door. I’ve got an important meeting with my manager and I forgot my access card at home.,Tailgating
+"I’m supposed to be meeting with the head of compliance inside, but I seem to have left all my things in a different building. Mind if you let me in really quick?",Tailgating
+We appreciate your feedback! Take our brief survey and be entered into a drawing for a fantastic prize. Don’t miss out on this opportunity!,Baiting
+"You have won a $1000 gift card! To claim your prize, kindly provide your credit card details and social security number by replying to this email. Don't miss out!",Phishing
+"We noticed unusual login attempts on your account from an unknown device. To secure your account, kindly follow the link and verify your identity within the next 24 hours. Failure to do so may result in temporary access restrictions. 
+
+Thank you, 
+Customer Support",Phishing
+"Your account has been flagged for unauthorized access. To restore full functionality, please log in and confirm your identity. Your prompt attention to this matter is crucial. Access the verification page: [malicious link]",Phishing
+"Dear customer, we've noticed unusual activity on your account. To verify your identity, please provide us with your social security number and date of birth. This will help us secure your account and prevent any unauthorized access.",Pretexting
+"As part of our ongoing commitment to improve service, we need to validate some of your personal information. Could you please provide your address and date of birth?",Pretexting
+"Get ready for an exclusive offer! Click now to receive a $100 gift card valid at your favorite store. Hurry, this deal won't last long!",Baiting
+"Hi, I'm doing a survey for the security team about badge access. Can you let me in while I tag your entry for our report?",Tailgating
+"I was just in the elevator with the IT manager, and he said I could use my coworker's pass if I ever needed to get into the restricted area, so I just went along with it when the card reader beeped.",Tailgating
+"As part of our security measures, could you let me know how you usually recover your password? It helps us enhance your protection!",Quizzing
+"Hey, I'm doing a survey about company security protocols. Can you tell me what your password policy is? That would really help my research!",Quizzing
+Important Update: We've detected unusual activity involving your bank account. Click here to review transactions and verify your account. Failure to do so will result in temporary restrictions on your account. Act now!,Phishing
+"I saw a few folks from HR getting lunch and, without thinking, I just slipped in behind them when they swiped their card. Didn't want to miss a good lunch conversation!",Tailgating
+"Dear User, your account will be suspended unless you verify your identity. Click the link below and provide your login credentials to prevent any interruption in service. Act fast, as this is urgent!",Phishing
+Can you tell me about the last security breach you faced? I'm looking at case studies for my cybersecurity class.,Quizzing
+Congratulations! You have been selected to receive a complimentary subscription upgrade. Just provide your email and we’ll activate it right away!,Baiting
+"I’m just heading to a meeting with the manager, but I left my badge in my other suit. Could you help me get in so I don’t keep them waiting?",Tailgating
+"As an expert in your field, can you tell me how your team tracks compliance with data protection laws?",Quizzing
+"A person with a clipboard approached me during lunch, saying they were conducting a survey for the management and asked if I could quickly answer a few questions, which I thought was odd.",Tailgating
+"Hey there! We’re giving away free subscriptions to premium software for a limited time. Just sign up through the link, and you could be one of the lucky winners!",Baiting
+Big news! We're selecting users to receive early access to new features and exclusive products. Sign up now to ensure you're in the running for a great reward!,Baiting
+"The security guard at the entrance seemed busy on his phone, so I just walked in behind a group of employees. It seemed like they wouldn't mind me tagging along for a moment.",Tailgating
+"Do you happen to know how often your team updates the firewall settings? Just doing some casual research, nothing serious!",Quizzing
+Welcome back! We noticed a login from an unknown location. Please verify your account by entering your credentials through the link provided to maintain your account security.,Phishing
+"Important: Your email storage is full. To prevent data loss, please verify your account by logging in through our secure portal. Act quickly to maintain your account's functionality!",Phishing
+"Claim your chance to access our exclusive webinar on the latest trends in cybersecurity... and if you join live, you could win a fantastic prize!",Baiting
+I left my badge in my other suit. I'm supposed to meet with the head of security right now. Can you just let me in? It’s really important!,Tailgating
+Can you remind me of your last three transactions? This will help us keep your account secure.,Quizzing
+"Dear valued customer, due to a recent system upgrade, we need to verify your account details. Kindly reply with your username and password so we can ensure your account is secure.",Pretexting
+I'm really interested in how you manage employee access to sensitive data. Could you share the process you have in place?,Quizzing
+"I noticed that the security door is often left ajar, so I just walked in behind a group of employees who were chatting about the latest project.",Tailgating
+"Before we proceed, could you share the last two digits of your social security number for our records?",Quizzing
+"Dear Customer, we are giving away gift cards to our loyal users. To claim yours, please confirm your information at the link below. Supplies are limited, so hurry!",Phishing
+Hi! This is Jason from tech support. We are performing a security overhaul and I need to confirm your account settings. Please reply with your login ID and the last update made to your account.,Pretexting
+"Good afternoon! This is Mark, your building manager. We’re installing a new badge system for entry and just need you to confirm your start date and the last four digits of your social security number for our files.",Pretexting
+"I was told to come by this way, but I didn't realize I needed a pass to enter. It's really important I get in right now—can you help me out?",Tailgating
+"Congratulations! You've been selected for an exclusive giveaway. Just click the link below to claim your brand new iPhone, but hurry, this offer is only valid for the first 50 users!",Baiting
+Join our mystery box contest! Simply provide us with your mailing address and you'll be in the running for some exciting tech gadgets.,Baiting
+"I’m an intern in the marketing department and I really need to get to the upper floor for a presentation. I accidentally left my ID at home, any chance you can help me get through?",Tailgating
+"Hi, this is Sarah from the health insurance company. We noticed suspicious activity on your account and need to confirm your personal information to assist you further.",Pretexting
+"Hello, I'm here for the meeting with the security team, but I don't have my identification. Could you let me in? It’s quite urgent!",Tailgating
+"I noticed you were headed to the secure lab. I just forgot my ID at my desk; could you let me in with your badge? My supervisor is waiting for me inside, and I really can't afford to be late for this meeting.",Tailgating
+"I overheard the last meeting, and I really need to check on the sensitive files. Would you be so kind to let me through while I look for my card?",Tailgating
+"Hi, this is Alex from support! We’ve had reports of a potential breach on our servers, could you let me know your security question answers for confirmation?",Pretexting
+"I was near the entrance when a woman in a corporate shirt asked for directions and then seamlessly walked past the guard, pretending as if she belonged there.",Tailgating
+"Hey, it's Mark from Customer Service. We’re running a special promotion and need to validate your identity to ensure you receive the rewards. Can you please confirm your last transaction and the card information used?",Pretexting
+You've won a brand new gaming console! Just click this link to claim your prize. Don't miss out on this incredible offer!,Baiting
+"Get ready for some amazing news! Join our community and answer a few questions, and you could win an exclusive membership to our elite group. Only a few lucky winners!",Baiting
