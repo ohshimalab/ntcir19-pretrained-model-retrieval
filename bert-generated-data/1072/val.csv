@@ -1,4 +1,4 @@
-text,label
+text,labels
 "The payment system is down, causing us to lose revenue. We cannot wait for the next support slot; this situation is critical!",service_escalation
 "I'm having a serious issue with my server going down repeatedly, and I need immediate assistance to get it back online. The usual troubleshooting steps haven't worked, and it's impacting our business operations significantly. Please escalate this to someone who can help right away.",service_escalation
 I keep getting a blue screen error on my computer. What are the recommended troubleshooting steps I should take to investigate this?,troubleshooting_request

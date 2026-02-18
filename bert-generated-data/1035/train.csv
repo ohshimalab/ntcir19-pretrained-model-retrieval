@@ -1,4 +1,4 @@
-text,label
+text,labels
 "Users reported receiving strange requests for login information, which resulted in further scrutiny of our internal access policies and practices. We must enhance user awareness training.",Unauthorized Access
 "An unexpected spike in failed login attempts alerted the security team, and subsequent investigation uncovered that sensitive information had been extracted from the server by exploiting a vulnerability in their software.",Data Breach
 "An internal investigation uncovered that an employee had been selling access to the company's client database, prompting immediate action from the cybersecurity team to mitigate the situation.",Insider Threat

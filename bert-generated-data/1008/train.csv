@@ -1,4 +1,4 @@
-text,label
+text,labels
 Our network monitoring tools have alerted us to a malicious attempt to overwhelm our online services. There is a risk that users may experience degraded performance.,Denial of Service Threat
 "Your recent transaction raised a red flag in our system. To ensure it's valid, please confirm your payment details using the secure link provided. This is critical to protect your account.",Phishing Attempt
 "Attention: Violation detected on your account. To ensure your security, follow the link to update your information right away: [malicious link]",Phishing Attempt

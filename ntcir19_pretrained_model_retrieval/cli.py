@@ -473,7 +473,6 @@ def finetune_all(
         to_load_data_dirs.extend([ft.data_dir_root, ft.generated_data_dir_root])
     data_dirs = _load_datasets(to_load_data_dirs, logger)
     model_ids = _load_models(ft.model_list_excel, ft.model_list_column, logger)
-
     num_models = len(model_ids)
     total_jobs = len(data_dirs) * num_models
     logger.info(f"Inventory: {len(data_dirs)} datasets × {num_models} models = {total_jobs} total jobs")

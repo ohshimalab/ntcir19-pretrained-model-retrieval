@@ -1,4 +1,4 @@
-text,label
+text,labels
 "I ran a trace route to a website, and I see a lot of timeouts. This started happening after we switched ISPs. What do you recommend to narrow down the problem?",Network Diagnostic
 "After updating my system, I'm encountering a blue screen of death. I’ve attempted a system restore and even checked for corrupted drivers, but I need advanced techniques to resolve this. Help!",Advanced Troubleshooting
 "I'm getting intermittent connectivity issues with my VPN. I've tried resetting my router and reinstalling the VPN client, but the problem persists. Can you help me troubleshoot further?",Advanced Troubleshooting

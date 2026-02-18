@@ -1,4 +1,4 @@
-text,label
+text,labels
 "I can’t login to the system at all, it says my account is locked. This is critical as I need to access reports for the board meeting today!",High Urgency
 "I'm getting constant error messages saying the application is down. We rely on it for customer support, and this needs urgent attention!",High Urgency
 "The network outage has left all our remote workers disconnected, and they cannot perform any tasks. This is an urgent issue requiring your quick intervention!",High Urgency

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "Users are complaining about being unable to submit their support tickets, which is causing a huge backlog. This issue needs to be fixed immediately!",High Urgency
 "The printer in the office is showing an error message, and it's preventing us from printing important documents. Can someone take a look at it soon?",Medium Urgency
 "Could you remind me where to find the troubleshooting guide? I might need it eventually, but everything seems fine right now.",Low Urgency

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "When integrating third-party APIs, always review the documentation for rate limits and error handling practices, as exceeding allowed quotas can lead to temporary bans or unexpected service interruptions.",Advanced
 "If you're encountering persistent connectivity issues with the VPN, it might be necessary to delve deeper into the logs located at /var/log/vpn.log. Look for any errors related to authentication failures and troubleshoot the encryption algorithms used. It can also help to check if the DNS settings are properly configured on both the server and client sides to resolve any potential domain resolution problems.",Advanced
 "When configuring a load balancer, ensure that the health checks are set up correctly to monitor the status of backend servers. Adjust the timeout settings based on the application’s expected response times. Moreover, validate session persistence requirements to maintain user sessions across distributed instances when necessary.",Advanced

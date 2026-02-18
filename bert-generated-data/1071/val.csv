@@ -1,4 +1,4 @@
-text,label
+text,labels
 "A recent vulnerability report highlighted an exploit where attackers could input excessive data into a fixed-length buffer, causing unexpected behavior in the legacy software.",Buffer Overflow
 "He noted that the website didn't validate inputs properly, allowing attackers to run JavaScript code in the context of the users' browser sessions.",Cross-Site Scripting (XSS)
 "Exploiting a flaw when an application tries to store user data beyond its allocated space can lead hackers to overwrite memory, thereby executing malicious scripts.",Buffer Overflow

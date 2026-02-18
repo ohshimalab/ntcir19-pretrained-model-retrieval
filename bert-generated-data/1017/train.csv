@@ -1,4 +1,4 @@
-text,label
+text,labels
 "A security training session showed that a few employees were unaware of phishing tactics. The organization plans future refresher courses, but there was no reported incident from this lack of knowledge.",Low
 An incident where an employee accidentally exposed confidential client data due to a misconfigured cloud storage setting has been flagged for urgent review. The company must act swiftly to mitigate any potential fallout from this exposure.,High
 "A user mistakenly downloaded a malicious file, however, the file was flagged and quarantined by the company's endpoint detection system without any further impact to the network.",Low

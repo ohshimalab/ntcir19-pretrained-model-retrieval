@@ -1,4 +1,4 @@
-text,label
+text,labels
 "All the payment processing systems are down, resulting in a loss of revenue and impacting our customers. This is a severe problem as it affects multiple departments and requires immediate escalation to the engineering team.",Critical
 "We've had multiple requests about the account login page not responding for some users. This is preventing them from accessing essential resources, which is a major concern.",High
 Can you please confirm the hours for tech support service? I just want to know when I can reach someone for help.,Low

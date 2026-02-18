@@ -1,4 +1,4 @@
-text,label
+text,labels
 An employee reported a pop-up claiming their system was infected and offering a software fix. This was a classic ruse to install more intrusive programs under the guise of helping.,Malware
 "A public announcement was made by a healthcare provider stating that confidential patient records were exposed after unauthorized individuals accessed their system, putting thousands at risk of identity theft and fraud.",Data Breach
 "The company discovered that a contractor had misconfigured the database security settings, allowing thousands of employee records to be accessible without proper encryption. They promptly initiated an investigation.",Data Breach

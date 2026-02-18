@@ -1,4 +1,4 @@
-text,label
+text,labels
 "A phishing campaign targeting a specific sector has resulted in multiple accounts being taken over, leading to data loss and unauthorized access to confidential information. Organizations must implement strict protocols to safeguard against future incidents.",Critical
 "An incident involving SQL injection was discovered during a routine security assessment. The vulnerability allowed unauthorized access to critical databases, risking exposure of proprietary data and user information.",High
 "Some security alerts were triggered by unusual login attempts from remote locations, but upon investigation, they were linked to legitimate employees accessing their accounts from travel sites. No unauthorized access was achieved during this period.",Low

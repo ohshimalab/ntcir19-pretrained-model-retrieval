@@ -1,4 +1,4 @@
-text,label
+text,labels
 A user accessed the company website to retrieve the latest software updates during regular business hours and completed the download without any issues.,Normal
 Routine checks reveal that the network traffic shows users accessing cloud storage services for scheduled backups; all activities fall within expected usage limits.,Normal
 Traffic analysis shows a spike in requests to a specific port that is not commonly used by legitimate applications within this network.,Suspicious

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "The software's newest patch includes security enhancements but also introduces a few new minor bugs. Users are advised to implement the update despite the known issues, as the vulnerabilities it addresses could lead to data breaches if not handled promptly.",Medium Risk
 "While the patch resolves a few known issues, it does not affect any major security protocols. Therefore, the impact is minimal on overall system integrity.",Low Risk
 "The new version of the software fixes an issue that could allow unauthorized users to see sensitive information under specific circumstances. Although the threat level is not high, addressing this matter soon can reduce risks associated with data privacy.",Medium Risk

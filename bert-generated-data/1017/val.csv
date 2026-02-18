@@ -1,4 +1,4 @@
-text,label
+text,labels
 "During a security assessment, it was found that outdated software in use could lead to vulnerabilities. While no exploits have been identified, the team is prioritizing updates and patches and reviewing their current software update policies to mitigate future risks of a serious breach.",Medium
 "A large-scale denial of service (DoS) attack has occurred against an online payment processor, rendering their services inaccessible for several hours. This incident has not only disrupted transactions but has also led to significant financial losses and reputational damage to partner organizations involved.",Critical
 Security assessment reveals multiple vulnerabilities in the web application that could be exploited by attackers. Immediate measures are required to patch the system and prevent data leakage.,High

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "During the analysis of patient responses to the new treatment, several participants were dropped from the study because they did not meet the criteria, potentially influencing the overall efficacy results.",Data Exclusion
 "The prevalence rates of a certain disease were much higher in reported cases from specific clinics, potentially influencing perceptions of the disease's commonality without considering access to healthcare limitations.",Reporting Bias
 "In an analysis of mental health interventions, the researchers presented data that only included successful case studies, while discarding those that did not show improvement, leading to a skewed perception of the intervention’s effectiveness among practitioners and stakeholders.",Reporting Bias

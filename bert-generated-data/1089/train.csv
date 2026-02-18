@@ -1,4 +1,4 @@
-text,label
+text,labels
 An employee's workstation has been communicating with an IP address that is unrecognized and flagged for previous phishing attempts. The frequency of these communications has increased significantly over the past few hours.,Suspicious
 "During the usual business hours, there were multiple connections established by the office printer to upload scanned documents to the designated cloud storage. Everything seems to operate smoothly as per the network logs.",Normal
 "A newly connected device on the network is trying to bypass standard authentication protocols, attempting to access sensitive areas of our IT infrastructure that are normally restricted to certain users.",Suspicious

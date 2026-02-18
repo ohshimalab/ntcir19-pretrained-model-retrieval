@@ -1,4 +1,4 @@
-text,label
+text,labels
 "The seminar provided insights into recent pharmaceutical developments, yet it did not delve into issues of how these advancements impact relationships between drugs and known patient symptoms.",No Relationship
 "In clinical trials, concurrent use of newer antidepressants with certain anti-seizure medications has raised concerns over serotonin syndrome, compelling practitioners to assess therapy comprehensively.",Drug-Drug Interaction
 "While discussing the patient's history, it became clear that there were no previous instances of allergic reactions, making the current treatment plan straightforward.",No Relationship

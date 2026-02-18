@@ -1,4 +1,4 @@
-text,label
+text,labels
 "After installing the latest version of our project management tool, I noticed that it crashes when I try to access files created in the previous version. It seems a new update might be necessary to resolve this problem.",Upgrade Recommendation Needed
 I heard from a colleague that the new software version might not support some plugins I've been using. Can you confirm if that’s true?,Backward Compatibility Issue
 "I'm trying to run the latest plugin with the software I have, but it seems like it only supports the newer version. Is there any way I can make it work?",Forward Compatibility Issue

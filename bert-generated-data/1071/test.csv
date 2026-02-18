@@ -1,4 +1,4 @@
-text,label
+text,labels
 "The use of spoofed IP addresses can facilitate an attack where the hacker inserts themselves into a data flow. This makes it difficult for victims to detect the alteration of their data, as it appears to be coming from a trusted source.",Man-in-the-Middle Attack
 This specific vulnerability often goes unnoticed until a stress test reveals that the application can be forced into revealing sensitive information or executing harmful commands due to inadequate input size checks.,Buffer Overflow
 "In some legacy systems, a flaw exists where the lack of boundary checking on user inputs could lead to severe consequences if exploited, which requires immediate attention from developers.",Buffer Overflow

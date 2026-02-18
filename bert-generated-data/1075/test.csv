@@ -1,4 +1,4 @@
-text,label
+text,labels
 "In a recent study evaluating the effects of dietary interventions on weight loss, the researchers did not adequately account for participants' physical activity levels, which could significantly affect the results.",Confounding Variable
 "The researchers observed variations in the patient outcomes due to inconsistent timing during medication administration, which potentially skewed the efficacy results reported in this clinical trial.",Measurement Error
 "The results indicated a strong correlation between exercise and improved mental health; however, many studies did not account for the varying definitions of physical activity, which could lead to a misinterpretation of the findings.",Reporting Bias

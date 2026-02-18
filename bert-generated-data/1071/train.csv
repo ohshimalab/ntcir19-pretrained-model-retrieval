@@ -1,4 +1,4 @@
-text,label
+text,labels
 "Security researchers have been warning about a method where input fields are not properly validated, leading to situations where attackers can run malicious SQL statements that can alter the database structure.",SQL Injection
 "An attacker utilized an outdated library that had a known vulnerability which could be triggered by specially crafted input, compromising the system's integrity.",Buffer Overflow
 "Multiple servers crashed sequentially as they were barraged with more traffic than they could handle, resulting in outages that lasted several hours.",Denial of Service (DoS)

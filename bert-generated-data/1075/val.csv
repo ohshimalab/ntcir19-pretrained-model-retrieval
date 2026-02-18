@@ -1,4 +1,4 @@
-text,label
+text,labels
 "While we observed a significant correlation between medication adherence and health outcomes, our sample predominantly consisted of older adults, which diminishes the applicability of our findings to younger patients.",Sampling Bias
 "The analysis on sleep disorders failed to incorporate data from hospitalized patients, leading to an underestimation of the true prevalence of severe cases, which might affect the conclusions drawn about treatment efficacy.",Data Exclusion
 "The prevalence rates calculated for the disease were challenged after discovering that some diagnostic tests utilized during the study were not standardized, introducing a potential bias in the reported incidence.",Measurement Error

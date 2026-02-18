@@ -1,4 +1,4 @@
-text,label
+text,labels
 "While they promote a waste reduction strategy, upon closer inspection, their recycling programs only cover a small fraction of their total waste output, making their claims misleading.",Invalid Claim
 "In their annual report, they state that they have cut emissions by 50%, but their calculations do not account for certain operations, making the figure misleading and potentially false.",Invalid Claim
 "The new biodegradable packaging launched by our company replaces 90% of plastic materials and has been thoroughly tested for its environmental impact, earning a certification from a recognized sustainability authority which verifies its claims.",Valid Claim

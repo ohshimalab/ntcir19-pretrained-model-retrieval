@@ -1,4 +1,4 @@
-text,label
+text,labels
 My external hard drive isn't being recognized by my computer. I really need to access my files. What troubleshooting steps should I follow to resolve this?,troubleshooting_request
 "I've submitted a ticket for the server outage twice already, but no one has responded! This needs to be addressed ASAP since it's affecting all our clients.",service_escalation
 "After multiple attempts to fix the connectivity issues with my device, I'm still facing intermittent disconnections. I'm reaching out to get this addressed by someone who can implement a fix as soon as possible.",service_escalation

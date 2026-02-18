@@ -1,4 +1,4 @@
-text,label
+text,labels
 "In the latest code review, we identified an insecure direct object reference that could expose user accounts. This shouldn't be taken lightly, as it poses a real threat to user security and privacy.",Vulnerability Disclosure
 Warning: An influx of traffic has been detected on our primary login page. This type of behavior often precedes an attempt to bring down our services. Please monitor the situation closely.,Denial of Service Threat
 "Attention: Software Update Needed! 

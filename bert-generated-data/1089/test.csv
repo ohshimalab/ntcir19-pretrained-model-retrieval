@@ -1,4 +1,4 @@
-text,label
+text,labels
 "Data flow patterns indicated that a large number of outbound connections were established within a short timeframe, particularly to IP addresses associated with known threat actors.",Suspicious
 "A user logged into the network from a company-issued laptop, completed their tasks, and then logged off without any unusual activity noted.",Normal
 "The ping responses from all routers indicate standard latency levels, and there are no signs of packet loss, confirming the network's stability during ongoing projects.",Normal

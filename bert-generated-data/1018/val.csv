@@ -1,4 +1,4 @@
-text,label
+text,labels
 "After the recent update, some users are experiencing slow load times when accessing the reporting features, which is affecting their ability to generate timely insights.",Medium
 "The application crashed completely during peak hours, resulting in a total loss of data for all users connected at that time. This is unacceptable and must be fixed ASAP as it affects our client relationships.",Critical
 "There seems to be an issue with the payment processing feature, as transactions are failing unexpectedly. This is critical for our customers and needs your immediate attention to fix it.",High

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "We take your security very seriously and, unfortunately, we must inform you that a breach of our records has taken place. Rest assured, we are actively working to resolve this issue and will keep you updated as we gather more information.",Data Breach Notification
 Urgent: Your system has been compromised. Download this patch immediately to prevent further unauthorized access. Time is of the essence!,Malware Delivery
 "Hi there! You have a pending refund. To receive it, please verify your identity by clicking on the link below. Time is running out!",Phishing Attempt

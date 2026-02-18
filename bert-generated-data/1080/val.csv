@@ -1,4 +1,4 @@
-text,label
+text,labels
 "We have implemented an update that enhances file management capabilities. It does not include any patches for security vulnerabilities, and the risk is assessed as very low.",No Risk
 "In a shocking revelation, experts disclosed that a major software used in financial institutions contains numerous unaddressed vulnerabilities. This software is a prime target for cybercriminals looking to exploit such weaknesses. Companies are urged to implement the latest security patches without delay to safeguard their operations.",High Risk
 "The latest update for the web browser provides performance improvements and fixes a few outdated components, but it doesn't change the underlying security frameworks, thus presenting a negligible risk environment.",Low Risk

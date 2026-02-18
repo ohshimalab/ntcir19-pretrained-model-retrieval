@@ -1,4 +1,4 @@
-text,label
+text,labels
 "I've tried restarting my router multiple times, but the internet keeps dropping out. Can you help me check the logs for any persistent issues?",Advanced Troubleshooting
 "Hey, I just got a new monitor and I can't get it to display anything. I already tried plugging it into different ports. Any suggestions?",Basic Troubleshooting
 "I need help with a recurring error message in my database application. It seems linked to specific queries, but I’m unsure how to delve into the performance metrics and execution plans to resolve it.",Advanced Troubleshooting

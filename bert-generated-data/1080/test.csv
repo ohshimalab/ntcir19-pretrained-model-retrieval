@@ -1,4 +1,4 @@
-text,label
+text,labels
 "Warning: the application used for financial transactions has a vulnerability that could allow hackers to intercept data. This could compromise user credentials and financial information, making immediate software updates crucial to protect users from theft and fraud.",High Risk
 "A recent patch for the web service includes minor enhancements and several non-critical bug fixes. The developers have assured that all current security protocols are maintained and there are no new threats that could affect user security, making this update quite stable.",Low Risk
 "An update has been made available, which includes bug fixes and addresses a moderate vulnerability that's being actively tracked. Users should not delay in applying the update to maintain their system security.",Medium Risk

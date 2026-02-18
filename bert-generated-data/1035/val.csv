@@ -1,4 +1,4 @@
-text,label
+text,labels
 "A recent investigation revealed that sensitive customer information from our online portal was accessed in an unauthorized manner, impacting thousands of users who trusted our service with their personal data.",Data Breach
 "A large number of users reported they could not access the company's online services due to what appears to be an attack that overloaded the servers with excessive requests, preventing normal operations.",Denial of Service
 "A third-party vendor reported that their security systems were breached, revealing that our client's proprietary data was leaked to malicious actors. We are currently assessing the extent of the exposure.",Data Breach

@@ -1,4 +1,4 @@
-text,label
+text,labels
 I need help resetting my password. The website isn't giving me clear instructions and I'm stuck now.,Beginner
 "If you're encountering a persistent latency issue with your VoIP system, one potential solution involves prioritizing VOIP traffic through QoS settings. Adjusting these settings may require an understanding of DSCP tagging and network topology to effectively manage bandwidth allocation.",Advanced
 "For environments utilizing multiple virtual machines, it’s essential to monitor resource usage closely to prevent performance degradation. Implementing a centralized logging system will assist in analyzing patterns in performance metrics, allowing for preemptive measures before resource exhaustion occurs.",Advanced

@@ -1,4 +1,4 @@
-text,label
+text,labels
 "When I was entering the office, a man in a suit asked me if I could let him in since he had left his access card in his car, and he looked just like our HR director.",Tailgating
 "Due to a recent security update, we need to confirm your payment information. Failure to do so will result in account termination. Login now to avoid any interruptions.",Phishing
 "Hi, I'm calling from the support team of your internet provider. There seems to be an issue with your account setting. I need to confirm your account number and the password associated with it to assist you right away. We're here to help!",Pretexting

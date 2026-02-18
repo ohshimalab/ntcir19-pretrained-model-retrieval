@@ -1,4 +1,4 @@
-text,label
+text,labels
 My team is facing issues with the new software update. It appears that some functionalities we relied on from the old version are no longer supported. What should we do to fix this?,Backward Compatibility Issue
 It seems that the latest version of our design software isn't working well with the files created by the previous version. Are there known issues with compatibility that I should be aware of?,Forward Compatibility Issue
 "The system upgrade was smooth, and I didn't encounter any conflicts with existing software; it all aligns well together.",No Compatibility Issue

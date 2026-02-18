@@ -1,4 +1,4 @@
-text,label
+text,labels
 "To troubleshoot a network performance issue, start by analyzing traffic patterns using a network monitoring tool. This may involve looking for congestion points, identifying bandwidth hogs, and understanding the Quality of Service (QoS) rules applied to various types of traffic. If you’re familiar with packet captures, consider using Wireshark for a deeper analysis of the traffic to pinpoint anomalies. It’s often necessary to collaborate with network engineers to optimize switch configurations and routing settings.",Advanced
 "If your software is crashing intermittently, review its logs for any error messages that could provide insight into the cause. Sometimes, memory leaks can result from prolonged usage. If available, running the application in a debugging mode could help in identifying specific modules causing issues before they impact user experience significantly.",Intermediate
 "To enable two-factor authentication, go to your account settings. Look for security options and follow the prompts to add your phone number for verification.",Beginner
