@@ -435,6 +435,7 @@ def finetune_all(
     order: str = typer.Option("asc", "--order", help="Job order: asc (0..N) or desc (N..0)"),
     portion_index: int = typer.Option(1, "--portion-index", help="Portion number to run (1-indexed)"),
     portion_total: int = typer.Option(1, "--portion-total", help="Total portions to split assigned jobs"),
+    only_generated: bool = typer.Option(False, "--only-generated", help="Only use generated datasets"),
 ):
     """Fine-tune all (or assigned) models on all (or assigned) datasets.
 
@@ -465,7 +466,12 @@ def finetune_all(
         raise typer.Exit(code=2)
 
     # Load datasets and models
-    data_dirs = _load_datasets([ft.data_dir_root, ft.generated_data_dir_root], logger)
+    to_load_data_dirs = []
+    if only_generated:
+        to_load_data_dirs.append(ft.generated_data_dir_root)
+    else:
+        to_load_data_dirs.extend([ft.data_dir_root, ft.generated_data_dir_root])
+    data_dirs = _load_datasets(to_load_data_dirs, logger)
     model_ids = _load_models(ft.model_list_excel, ft.model_list_column, logger)
 
     num_models = len(model_ids)
