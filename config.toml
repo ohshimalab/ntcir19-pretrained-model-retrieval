@@ -42,6 +42,7 @@ revision = "refs/convert/parquet"
 # REQUIRED: Root directory containing dataset subdirectories
 # Each subdirectory must contain train.jsonl, val.jsonl, test.jsonl
 data_dir_root = "bert-data"
+generated_data_dir_root = "bert-generated-data"
 
 # REQUIRED: Excel file listing model IDs to fine-tune
 # Typically one model ID per row in column specified by model_list_column

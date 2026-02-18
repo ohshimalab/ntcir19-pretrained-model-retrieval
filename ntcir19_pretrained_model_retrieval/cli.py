@@ -178,12 +178,12 @@ def _process_single_task(row: pd.Series, cfg_download, logger) -> None:
         )
 
 
-def _load_datasets(data_dir_root: Path, logger) -> list[Path]:
+def _load_datasets(data_dir_roots: list[Path], logger) -> list[Path]:
     """
     Load and sort dataset directories.
 
     Args:
-        data_dir_root: Root directory containing dataset subdirectories
+        data_dir_roots: Root directory containing dataset subdirectories
         logger: Logger instance
 
     Returns:
@@ -193,13 +193,18 @@ def _load_datasets(data_dir_root: Path, logger) -> list[Path]:
         typer.Exit: If loading fails
     """
     try:
-        data_dirs = sorted(p for p in data_dir_root.iterdir() if p.is_dir())
+        data_dirs = []
+        for data_dir_root in data_dir_roots:
+            if not data_dir_root.exists() or not data_dir_root.is_dir():
+                logger.error(f"Dataset root directory not found: {data_dir_root}")
+                raise typer.Exit(code=2)
+            data_dirs.extend(p for p in data_dir_root.iterdir() if p.is_dir())
         if not data_dirs:
-            logger.error(f"No dataset directories found in {data_dir_root}")
+            logger.error(f"No dataset directories found in any of the provided root directories: {data_dir_roots}")
             raise typer.Exit(code=2)
         return data_dirs
     except Exception as e:
-        logger.error(f"Failed to list datasets in {data_dir_root}: {e}")
+        logger.error(f"Failed to list datasets in any of the provided root directories {data_dir_roots}: {e}")
         raise typer.Exit(code=2)
 
 
@@ -277,6 +282,7 @@ def download_datasets(
 
     _validate_task_excel(dl.task_excel)
     df = pd.read_excel(dl.task_excel)
+    df = df[df["source"] == "hugging_face"]
     _validate_task_columns(df)
 
     for index, row in df.iterrows():
@@ -448,15 +454,18 @@ def finetune_all(
     logger.info("Loaded config for finetune_all")
 
     # Validate required config
-    if ft.data_dir_root is None:
-        typer.secho("Error: `data_dir_root` must be set in the [finetune] section of the config file.", fg="red")
+    if ft.data_dir_root is None and ft.generated_data_dir_root is None:
+        typer.secho(
+            "Error: Either `data_dir_root` or `generated_data_dir_root` must be set in the [finetune] section of the config file.",
+            fg="red",
+        )
         raise typer.Exit(code=2)
     if ft.model_list_excel is None:
         typer.secho("Error: `model_list_excel` must be set in the [finetune] section of the config file.", fg="red")
         raise typer.Exit(code=2)
 
     # Load datasets and models
-    data_dirs = _load_datasets(ft.data_dir_root, logger)
+    data_dirs = _load_datasets([ft.data_dir_root, ft.generated_data_dir_root], logger)
     model_ids = _load_models(ft.model_list_excel, ft.model_list_column, logger)
 
     num_models = len(model_ids)

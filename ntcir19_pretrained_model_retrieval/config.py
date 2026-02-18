@@ -34,6 +34,9 @@ class FinetuneConfig(BaseConfig):
     model_config = ConfigDict(protected_namespaces=())
 
     data_dir_root: Path | None = Field(default=None, description="Root directory containing dataset subdirectories")
+    generated_data_dir_root: Path | None = Field(
+        default=None, description="Root directory containing generated dataset subdirectories"
+    )
     model_list_excel: Path | None = Field(default=None, description="Path to Excel file listing models to fine-tune")
     model_list_column: str = Field(default="model_name", description="Column name in model list Excel")
     model_revision: str | None = Field(default=None, description="Model checkpoint revision to pin")
