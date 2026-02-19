@@ -198,7 +198,9 @@ def _load_datasets(data_dir_roots: list[Path], logger) -> list[Path]:
             if not data_dir_root.exists() or not data_dir_root.is_dir():
                 logger.error(f"Dataset root directory not found: {data_dir_root}")
                 raise typer.Exit(code=2)
-            data_dirs.extend(p for p in data_dir_root.iterdir() if p.is_dir())
+            data_dir_list = [p for p in data_dir_root.iterdir() if p.is_dir()]
+            data_dir_list = sorted(data_dir_list, key=lambda p: p.name.lower())
+            data_dirs.extend(data_dir_list)
         if not data_dirs:
             logger.error(f"No dataset directories found in any of the provided root directories: {data_dir_roots}")
             raise typer.Exit(code=2)
